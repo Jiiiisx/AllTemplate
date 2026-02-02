@@ -8,8 +8,12 @@ const Navbar: React.FC = () => {
         HOMEKU
       </div>
       
-      <div className="hidden md:flex gap-12">
-        <a href="#" className="nav-link">MENU</a>
+      <div className="hidden md:flex items-center gap-4 group cursor-pointer">
+        <span className="nav-link">MENU</span>
+        <div className="flex flex-col gap-1 w-6">
+          <div className="h-[1px] w-full bg-white group-hover:bg-brand-gold transition-colors"></div>
+          <div className="h-[1px] w-full bg-white group-hover:bg-brand-gold transition-colors"></div>
+        </div>
       </div>
 
       <button className="bg-brand-gold text-black px-8 py-3 text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-white transition-all">

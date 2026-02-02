@@ -3,18 +3,21 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen pt-32 pb-12 px-8 flex flex-col justify-between">
-      {/* Headline Section */}
-      <div className="relative z-10 mt-12">
-        <h1 className="text-[12vw] md:text-[8vw] leading-[0.85] font-serif font-medium tracking-tighter">
+    <section className="relative min-h-screen pt-32 pb-12 px-8 flex flex-col">
+      {/* Headline Section - Higher Z-index to stay on top */}
+      <div className="relative z-20 mt-12">
+        <h1 
+          className="text-[12vw] md:text-[8vw] leading-[0.85] font-serif font-medium tracking-tighter"
+          style={{ textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}
+        >
           Modern
           <br />
           <span className="text-brand-gold font-heritage italic">Heritage</span> Living
         </h1>
       </div>
 
-      {/* Main Image Container */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[45%] w-[85%] h-[55vh] overflow-hidden bg-zinc-900">
+      {/* Main Image Container - Relative with negative margin to slide under headline */}
+      <div className="relative z-10 -mt-12 md:-mt-24 w-full md:w-[85%] mx-auto h-[45vh] md:h-[60vh] overflow-hidden bg-zinc-900 shadow-2xl">
         <img 
           src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1600" 
           alt="Modern Architecture" 
@@ -23,8 +26,8 @@ const Hero: React.FC = () => {
         />
       </div>
 
-      {/* Bottom Search/Filters */}
-      <div className="relative z-10 w-full border-t border-white/10 pt-8 pb-4 grid grid-cols-1 md:grid-cols-3 gap-8 mt-72">
+      {/* Bottom Search/Filters - Now naturally pushed below the image */}
+      <div className="relative z-20 w-full border-t border-white/10 pt-8 pb-4 grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 md:mt-24">
         <div className="flex flex-col gap-2">
           <span className="text-[10px] text-zinc-500 tracking-[0.2em] font-bold uppercase">Location</span>
           <div className="flex items-center justify-between group cursor-pointer">

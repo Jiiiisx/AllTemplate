@@ -7,6 +7,7 @@ const properties = [
     title: "The Zenith Atrium",
     location: "ZURICH, SWITZERLAND",
     price: "$1,450,000",
+    details: "4 BEDS • 3 BATHS • 3,200 SQFT",
     image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1200"
   },
   {
@@ -14,6 +15,7 @@ const properties = [
     title: "Ember Forest Lodge",
     location: "BRITISH COLUMBIA, CA",
     price: "$890,000",
+    details: "2 BEDS • 1 BATH • 1,150 SQFT",
     image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&q=80&w=1200"
   }
 ];
@@ -40,7 +42,8 @@ const CuratedAssets: React.FC = () => {
               
               <div className="absolute bottom-8 left-8 text-white">
                 <p className="text-[10px] tracking-[0.2em] font-bold uppercase mb-2 opacity-80">{property.location}</p>
-                <h3 className="text-3xl font-serif mb-2">{property.title}</h3>
+                <h3 className="text-3xl font-serif mb-1">{property.title}</h3>
+                <p className="text-[9px] tracking-[0.2em] font-bold text-zinc-400 mb-3">{property.details}</p>
                 <p className="text-brand-gold font-medium">{property.price}</p>
               </div>
             </div>
