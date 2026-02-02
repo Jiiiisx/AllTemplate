@@ -44,6 +44,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           
           <button 
             onClick={toggleMenu}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             className="lg:hidden p-2 text-espresso"
           >
             <span className="material-symbols-outlined !text-[28px] font-light">

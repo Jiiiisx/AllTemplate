@@ -25,14 +25,47 @@ export interface NavLink {
   href: string;
 }
 
+export interface MenuItem {
+  name: string;
+  price: string;
+  description: string;
+}
+
+export interface MenuCategory {
+  name: string;
+  items: MenuItem[];
+}
+
+export interface FeatureStat {
+  label: string;
+  value: string;
+  desc: string;
+}
+
 export interface SiteConfig {
   name: string;
+  seo: {
+    title: string;
+    description: string;
+    keywords: string;
+  };
+  contact: {
+    whatsapp: string;
+    maps: string;
+    address: string;
+  };
   hero: {
     badge: string;
     title: string;
     subtitle: string;
     cta: string;
     image: string;
+  };
+  menu: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    categories: MenuCategory[];
   };
   about: {
     badge: string;
@@ -51,4 +84,6 @@ export interface SiteConfig {
     hours: { days: string; time: string }[];
     copyright: string;
   };
+  featuredIn: string[];
+  stats: FeatureStat[];
 }

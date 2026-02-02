@@ -1,4 +1,3 @@
-
 export interface NavLink {
   label: string;
   href: string;
@@ -34,9 +33,36 @@ export interface JournalItem {
   mt?: string;
 }
 
+export interface MenuItem {
+  name: string;
+  price: string;
+  description: string;
+}
+
+export interface MenuCategory {
+  name: string;
+  items: MenuItem[];
+}
+
 export interface SiteConfig {
   name: string;
   tagline: string;
+  seo: {
+    title: string;
+    description: string;
+    keywords: string;
+  };
+  contact: {
+    whatsapp: string;
+    maps: string;
+    address: string;
+  };
+  menu: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    categories: MenuCategory[];
+  };
   hero: {
     badge: string;
     title: string;

@@ -66,6 +66,18 @@
         ::-webkit-scrollbar-thumb {
             background: var(--clay);
         }
+
+        @layer components {
+            .nav-link-mobile {
+                @apply font-display text-5xl md:text-7xl font-light tracking-tighter hover:text-clay transition-colors text-espresso flex items-baseline gap-4;
+            }
+            .btn-artisanal {
+                @apply px-12 py-5 bg-clay text-white text-[11px] tracking-[0.4em] font-bold uppercase hover:bg-espresso transition-all rounded-full;
+            }
+            .section-badge {
+                @apply text-clay text-[11px] tracking-[0.5em] font-bold uppercase block mb-8;
+            }
+        }
     </style>
     <script>
         tailwind.config = {

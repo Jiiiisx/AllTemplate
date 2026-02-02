@@ -36,16 +36,25 @@ const Footer: React.FC = () => {
           
           <div>
             <h4 className="text-[10px] font-bold uppercase tracking-[0.5em] mb-10 text-secondary">Briefing</h4>
-            <div className="relative group">
+            <form 
+              onSubmit={(e) => { e.preventDefault(); alert('Thank you for subscribing to our briefing.'); }}
+              className="relative group"
+            >
               <input 
-                className="w-full bg-transparent border-b border-slate-200 dark:border-slate-800 py-3 pr-10 focus:outline-none focus:border-secondary transition-colors text-sm font-light" 
+                className="w-full bg-transparent border-b border-slate-200 dark:border-slate-800 py-3 pr-10 focus:outline-none focus:border-secondary transition-colors text-sm font-light text-primary dark:text-white placeholder:text-slate-400" 
                 placeholder="Email Address" 
                 type="email"
+                required
+                aria-label="Email for newsletter"
               />
-              <button className="absolute right-0 top-1/2 -translate-y-1/2 text-slate-300 group-hover:text-secondary transition-colors">
+              <button 
+                type="submit" 
+                aria-label="Subscribe"
+                className="absolute right-0 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-secondary transition-colors"
+              >
                 <span className="material-symbols-outlined !text-[20px]">east</span>
               </button>
-            </div>
+            </form>
           </div>
         </div>
         

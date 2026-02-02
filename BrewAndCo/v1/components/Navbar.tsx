@@ -39,11 +39,17 @@ const Navbar: React.FC<NavbarProps> = ({ toggleDarkMode }) => {
         </ul>
 
         <div className="flex items-center gap-4 md:gap-8">
-          <button className="hidden sm:block text-[11px] tracking-[0.3em] font-bold border-b border-primary dark:border-white pb-1 text-primary dark:text-white hover:text-secondary hover:border-secondary transition-all">
+          <a 
+            href={`https://wa.me/${SITE_CONFIG.contact.whatsapp}?text=Halo, saya ingin melakukan pemesanan online.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:block text-[11px] tracking-[0.3em] font-bold border-b border-primary dark:border-white pb-1 text-primary dark:text-white hover:text-secondary hover:border-secondary transition-all"
+          >
             ORDER ONLINE
-          </button>
+          </a>
           <button 
             onClick={toggleDarkMode}
+            aria-label="Toggle dark mode"
             className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors text-primary dark:text-white"
           >
             <span className="material-symbols-outlined !text-[20px] block dark:hidden">dark_mode</span>
@@ -52,6 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleDarkMode }) => {
           
           <button 
             onClick={toggleMenu}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             className="lg:hidden p-2 text-primary dark:text-white"
           >
             <span className="material-symbols-outlined !text-[28px] font-light">

@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import FeaturedIn from './components/FeaturedIn';
 import About from './components/About';
+import FeatureStats from './components/FeatureStats';
 import Menu from './components/Menu';
 import TracingPath from './components/TracingPath';
 import Gallery from './components/Gallery';
@@ -40,7 +42,9 @@ const App: React.FC = () => {
       <Navbar toggleDarkMode={toggleDarkMode} />
       <main>
         <Hero />
+        <FeaturedIn />
         <About />
+        <FeatureStats />
         <Menu />
         <TracingPath />
         <Gallery />

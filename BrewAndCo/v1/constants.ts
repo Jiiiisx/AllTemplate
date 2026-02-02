@@ -8,7 +8,7 @@ export const SITE_CONFIG: SiteConfig = {
     keywords: "specialty coffee, austin cafe, minimalist coffee shop, single origin beans"
   },
   contact: {
-    whatsapp: "6281234567890", // Ganti dengan nomor asli
+    whatsapp: "6281234567890",
     maps: "https://goo.gl/maps/example",
     address: "123 Minimalism Ave, Austin, TX"
   },
@@ -41,7 +41,6 @@ export const SITE_CONFIG: SiteConfig = {
     ]
   },
   about: {
-// ... rest of the config
     badge: "Our Philosophy",
     title: "Minimalist",
     subtitle: "Complexity.",
@@ -64,12 +63,19 @@ export const SITE_CONFIG: SiteConfig = {
       { days: "Sat — Sun", time: "08 — 21" }
     ],
     copyright: "© 2024 Brew & Co. Coffee Roasters"
-  }
+  },
+  featuredIn: ["Forbes", "Wired", "Monocle", "Wallpaper*"],
+  stats: [
+    { label: "Extraction Temp", value: "92.4°C", desc: "Thermal stability for flavor clarity." },
+    { label: "Bean Selection", value: "Top 2%", desc: "Only the highest specialty grade." },
+    { label: "Roast Precision", value: "0.1s", desc: "Micro-controlled heat profiles." }
+  ]
 };
 
 export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "#hero" },
   { label: "Philosophy", href: "#about" },
+  { label: "Menu", href: "#menu" },
   { label: "Visuals", href: "#gallery" },
   { label: "Community", href: "#testimonials" }
 ];
@@ -109,47 +115,11 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     span: "md:col-span-4",
     height: "h-[600px]",
     mt: "mt-24 md:mt-12"
-  },
-  {
-    url: "https://lh3.googleusercontent.com/aida-public/AB6AXuDCegTcew92QhqPwYLOtSyjHI_vX5385CWK_s4RtyC-VC5q4JZgzQwWN99QuZw359SwQzrFW_RyucH6qbSYVPQsPqZBaSUtGAzjw9mFaAGQ0qS7I10AN0M751r-Iy1jUAXvHOABLQfHre4DZrJFXDh-__vyD1TnQ_eEnKgVY6P5UNpyuBCyy2POiNHIuiaYbwMOh-_WvfXm6UAwBmTyfFwn7GaiaR77yYw1G-EtbSbaPqYXgzUNcBgO4-wj1HwOvlo6wQyEidxVLzcj",
-    alt: "Coffee beans",
-    span: "md:col-span-4",
-    height: "h-[500px]",
-    mt: "-mt-12"
-  },
-  {
-    url: "https://lh3.googleusercontent.com/aida-public/AB6AXuDV5StGtJyLv_sKJih6SOLenqXSvFL71_ZNqG3eDAKoi_tZ8DkcgQiNkIfoiVE-VaKIrJeJb9dNpHzIgiR3aOPwMgf3ryUeLalZmgHCx2z7Byh1Z4JIxHltQ2CuWhw-7XYCi-QGnLWfKnT00BGRKBQ5rf0d3vNfj1vCXa1jqw0M-mIvWcbCRC3Yw2sKyRxgGP96T6m0z6LENYkh-tj1wAXDqOT4Q4pHfpsqeftU5qK8NRAgZQlA_Tst_QWJCKa3pHx8b2cF6hVtzE4g",
-    alt: "Cafe exterior",
-    span: "md:col-span-4",
-    height: "h-[700px]",
-    mt: "mt-12 md:-mt-24"
-  },
-  {
-    url: "https://lh3.googleusercontent.com/aida-public/AB6AXuC5xU8fHTI7uYK1ToY7VqGYJWTvOg0LePIjnW71C7JHkAgbi-4nlJE0-NSxdL241gEOkyKkAFIkUAvbKWOjU9Zjlr2fSVE9iQGs0SfbVWuKKWROKWFC1ZiJpk1e3v1dPpQp8ZZi_bEugXEt_zKZsLPHjiKM-YeecRGdZtq6CtqJkukiA-UppNJFdVBXihJueBEQfbCDYZiTUHdzpfvw4cGucG8WV_AUShGOsLZOm0Z7TmHDAlWKI-EtHvH4TvQGukCw81yk0tkmnWaH",
-    alt: "Iced coffee",
-    span: "md:col-span-4",
-    height: "h-[400px]",
-    mt: "mt-12"
   }
 ];
 
 export const STEPS: Step[] = [
-  {
-    id: "01",
-    title: "The Source",
-    description: "We partner with growers who prioritize biodiversity and ethical labor, ensuring the bean's integrity remains uncompromised from the start.",
-    mt: "mt-0"
-  },
-  {
-    id: "02",
-    title: "The Roast",
-    description: "Our small-batch roasting philosophy is about highlighting terroir. We don't hide the bean behind smoke; we let the soil speak.",
-    mt: "lg:mt-32"
-  },
-  {
-    id: "03",
-    title: "The Pour",
-    description: "Measured by the gram, timed to the second. A ritual of precision that respects the hard work of everyone involved in the chain.",
-    mt: "lg:mt-64"
-  }
+  { id: "01", title: "The Source", description: "Ethical labor and biodiversity.", mt: "mt-0" },
+  { id: "02", title: "The Roast", description: "Highlighting terroir in small batches.", mt: "lg:mt-32" },
+  { id: "03", title: "The Pour", description: "A ritual of absolute precision.", mt: "lg:mt-64" }
 ];

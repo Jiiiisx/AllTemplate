@@ -41,12 +41,25 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-[10px] font-bold uppercase tracking-[0.5em] mb-10 text-clay">{footer.newsletter.title}</h4>
             <p className="text-[11px] text-cream/40 mb-6 font-light">{footer.newsletter.description}</p>
-            <div className="relative group">
-              <input className="w-full bg-white/5 border-b border-white/20 py-4 px-4 focus:outline-none focus:border-clay transition-colors text-sm font-light text-white" placeholder="Email Address" type="email" />
-              <button className="absolute right-4 top-1/2 -translate-y-1/2 text-cream/30 group-hover:text-clay transition-colors">
+            <form 
+              onSubmit={(e) => { e.preventDefault(); alert('Subscribed successfully to Brew & Co. Briefing.'); }}
+              className="relative group"
+            >
+              <input 
+                className="w-full bg-white/5 border-b border-white/20 py-4 px-4 focus:outline-none focus:border-clay transition-colors text-sm font-light text-white placeholder:text-cream/30" 
+                placeholder="Email Address" 
+                type="email" 
+                required
+                aria-label="Email for newsletter"
+              />
+              <button 
+                type="submit" 
+                aria-label="Subscribe"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-cream/50 group-hover:text-clay transition-colors"
+              >
                 <span className="material-symbols-outlined !text-[20px]">east</span>
               </button>
-            </div>
+            </form>
           </div>
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center gap-10 pt-10 border-t border-white/10 text-[10px] font-bold tracking-[0.4em] uppercase text-cream/20">

@@ -7,6 +7,13 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24" id="hero">
+      {/* Decorative Background Text */}
+      <div className="absolute inset-0 z-[1] flex items-center justify-center overflow-hidden pointer-events-none opacity-10">
+        <span className="text-[25vw] font-display font-black text-white uppercase leading-none select-none tracking-tighter">
+          BREW
+        </span>
+      </div>
+
       <div className="absolute inset-0 z-0">
         <img 
           alt={hero.subtitle} 
@@ -24,10 +31,13 @@ const Hero: React.FC = () => {
           {hero.title} <br/> <span className="italic font-extralight opacity-90">{hero.subtitle}</span>
         </h1>
         <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-          <button className="group relative px-12 py-5 bg-white text-primary text-[11px] tracking-[0.4em] font-bold uppercase overflow-hidden transition-all hover:pr-16">
+          <a 
+            href="#menu"
+            className="group relative px-12 py-5 bg-white text-primary text-[11px] tracking-[0.4em] font-bold uppercase overflow-hidden transition-all hover:pr-16"
+          >
             <span className="relative z-10">{hero.cta}</span>
             <span className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all material-symbols-outlined">arrow_forward</span>
-          </button>
+          </a>
         </div>
       </div>
       
