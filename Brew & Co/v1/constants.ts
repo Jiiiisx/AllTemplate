@@ -1,0 +1,82 @@
+
+import { Testimonial, GalleryItem, Step } from './types';
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    quote: '"The clarity of flavor in their pour-overs is unmatched. A masterclass in minimalism."',
+    author: "Jordan S.",
+    role: "UX Lead",
+    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuC9m_aB04PD836n9gv4b6gLN-KL0i3ABDs7vuSVP5O7_Jml0XtNscV-VPHK1pzOFE6HsEypjpF2dhDcvSzIwY1l-lt9oV1n5VsT5c05rjPzoknIq_7Z__7sAfWS8pw-QP5rXkbxKGvuORNbTvTbutzHl_YOTidn3wY-1HS6UUISkwUm7S-afvXwfMT48F7mtgalZ7d1LgAx14LbEr3rjF3YQFfE9Mvv_Qy_YrsQsqKKk6-LYCkfLssjtsqfmiZvSFSxRiWjI9dz41Pm"
+  },
+  {
+    quote: '"An architectural gem. Every corner is designed for deep thought and better coffee."',
+    author: "Elena R.",
+    role: "Architect",
+    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuAB4Tl9ihyJuox21AyitqkF1xD5bcdwyhQdlIbNSpXGTbTcZb_ti6zRZT27gzkCs2Qh4AlXdUUn3Bx2eH-mx_KZZvMfJL6mql6HYScs8Hob2RWVPNVtSaiUzN6eTP11l1FtUPAQ4W2YLlCap1Y5xKBXkve5n66FzaRyOiu2ssoHV-E-e8gdizprpyyChCJDJQzEuKjr_vjNHxYSqiGDZzbg1z3QdMflXzQPQ0CHnGBtTtJpnXquBk5pW0_bH7T7JeL7xMfb7SucJJ6X"
+  },
+  {
+    quote: '"Consistent, scientific, yet soulful. Brew & Co is the only place that understands the ritual."',
+    author: "Marcus T.",
+    role: "Engineer",
+    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuATVqHhXSMCxhmdQx_UmFUHAJVtBoyzROgiPZvbbdojPMxtVuHAcsEXNit4AXmBsUdqg5iVZz_0ZeBVuORA0QbMCPbnRwPw6PQrk3ow3gyShneYslH802I2ZTX30PVpccNs4oF9F7jgC1zdiAQxtswP72i1HdPcZqY898tZpHTT-GTHTKD_7YJHpKHXmIo6PfbNB20SroK6DlsErEznLI2EEQxkijmt8Jg6xAjHv348P67_EcY1jUnN5leAGI4tslTV__YC4c6TooK1"
+  }
+];
+
+export const GALLERY_ITEMS: GalleryItem[] = [
+  {
+    url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAIS8fp5uRFtzA7s8xHbfVPimyJmpSfNaC1Pajl8N_yXCtK5V0vhsVLapWdC_UnC93q9UvuZKQb3aCIjO69ZtwSuAcKnKo6cf-gM56lidv5-_VQMpAir6PFub8PaHFKPwA1Llk891iB8K1UVKMmg6ipelVuuipwzVAZ1tW9yz9k9OgIBv2A6Kyomg3-u57a-clB2saJg1zG9QhjvoHIuT6-SyDjZf12sjJ6xinsHB6t_6_08bcFLyEZfq3wjRdLqKezbxSJzaPb5KyH",
+    alt: "People socializing",
+    span: "md:col-span-8",
+    height: "h-[600px]",
+    mt: "mt-0"
+  },
+  {
+    url: "https://lh3.googleusercontent.com/aida-public/AB6AXuBVarGgJ9JLp7TRBz7MQdL7L9s-M1eiA303isNyYYlqacg4eaKQrIiYOSTFYUTneUaVdsDRzKxUzDGraIao1lm61QRfE0o9__guYXPfbm3xKFV53FlNALqjrpzOA9JVql46b68bJXyFoJiV8q3Z0bpNSDENGIDMdzt-MO63yXY77idEcgVw50dFSol4XWtCuCtzJH4ypSiiIlQyLlK9pDB0819YVdDVUVs1NLusA-pgD-KQ_uYcl_KQsO-L_gcv86Zyg5mFtQy7efoK",
+    alt: "Latte art",
+    span: "md:col-span-4",
+    height: "h-[600px]",
+    mt: "mt-24 md:mt-12"
+  },
+  {
+    url: "https://lh3.googleusercontent.com/aida-public/AB6AXuDCegTcew92QhqPwYLOtSyjHI_vX5385CWK_s4RtyC-VC5q4JZgzQwWN99QuZw359SwQzrFW_RyucH6qbSYVPQsPqZBaSUtGAzjw9mFaAGQ0qS7I10AN0M751r-Iy1jUAXvHOABLQfHre4DZrJFXDh-__vyD1TnQ_eEnKgVY6P5UNpyuBCyy2POiNHIuiaYbwMOh-_WvfXm6UAwBmTyfFwn7GaiaR77yYw1G-EtbSbaPqYXgzUNcBgO4-wj1HwOvlo6wQyEidxVLzcj",
+    alt: "Coffee beans",
+    span: "md:col-span-4",
+    height: "h-[500px]",
+    mt: "-mt-12"
+  },
+  {
+    url: "https://lh3.googleusercontent.com/aida-public/AB6AXuDV5StGtJyLv_sKJih6SOLenqXSvFL71_ZNqG3eDAKoi_tZ8DkcgQiNkIfoiVE-VaKIrJeJb9dNpHzIgiR3aOPwMgf3ryUeLalZmgHCx2z7Byh1Z4JIxHltQ2CuWhw-7XYCi-QGnLWfKnT00BGRKBQ5rf0d3vNfj1vCXa1jqw0M-mIvWcbCRC3Yw2sKyRxgGP96T6m0z6LENYkh-tj1wAXDqOT4Q4pHfpsqeftU5qK8NRAgZQlA_Tst_QWJCKa3pHx8b2cF6hVtzE4g",
+    alt: "Cafe exterior",
+    span: "md:col-span-4",
+    height: "h-[700px]",
+    mt: "mt-12 md:-mt-24"
+  },
+  {
+    url: "https://lh3.googleusercontent.com/aida-public/AB6AXuC5xU8fHTI7uYK1ToY7VqGYJWTvOg0LePIjnW71C7JHkAgbi-4nlJE0-NSxdL241gEOkyKkAFIkUAvbKWOjU9Zjlr2fSVE9iQGs0SfbVWuKKWROKWFC1ZiJpk1e3v1dPpQp8ZZi_bEugXEt_zKZsLPHjiKM-YeecRGdZtq6CtqJkukiA-UppNJFdVBXihJueBEQfbCDYZiTUHdzpfvw4cGucG8WV_AUShGOsLZOm0Z7TmHDAlWKI-EtHvH4TvQGukCw81yk0tkmnWaH",
+    alt: "Iced coffee",
+    span: "md:col-span-4",
+    height: "h-[400px]",
+    mt: "mt-12"
+  }
+];
+
+export const STEPS: Step[] = [
+  {
+    id: "01",
+    title: "The Source",
+    description: "We partner with growers who prioritize biodiversity and ethical labor, ensuring the bean's integrity remains uncompromised from the start.",
+    mt: "mt-0"
+  },
+  {
+    id: "02",
+    title: "The Roast",
+    description: "Our small-batch roasting philosophy is about highlighting terroir. We don't hide the bean behind smoke; we let the soil speak.",
+    mt: "lg:mt-32"
+  },
+  {
+    id: "03",
+    title: "The Pour",
+    description: "Measured by the gram, timed to the second. A ritual of precision that respects the hard work of everyone involved in the chain.",
+    mt: "lg:mt-64"
+  }
+];
