@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-[10px] font-bold uppercase tracking-[0.5em] mb-10 text-clay">Sitemap</h4>
             <ul className="space-y-4 text-sm font-light text-cream/60">
-              {footer.sitemap.map((link, index) => (
+              {SITE_CONFIG.footer.sitemap.map((link, index) => (
                 <li key={index}><a className="hover:text-clay transition-colors" href={link.href}>{link.label}</a></li>
               ))}
             </ul>
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-[10px] font-bold uppercase tracking-[0.5em] mb-10 text-clay">Customer Care</h4>
             <ul className="space-y-4 text-sm font-light text-cream/60 uppercase tracking-widest">
-              {footer.customerCare.map((link, index) => (
+              {SITE_CONFIG.footer.customerCare.map((link, index) => (
                 <li key={index}><a className="hover:text-clay transition-colors" href={link.href}>{link.label}</a></li>
               ))}
             </ul>

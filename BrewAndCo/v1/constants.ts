@@ -2,6 +2,16 @@ import { Testimonial, GalleryItem, Step, SiteConfig, NavLink } from './types';
 
 export const SITE_CONFIG: SiteConfig = {
   name: "Brew & Co",
+  seo: {
+    title: "Brew & Co | Modern Coffee Experience Austin",
+    description: "Experience the finest single-origin coffee in Austin. Minimalist atmosphere, scientific precision, and artisanal roasts.",
+    keywords: "specialty coffee, austin cafe, minimalist coffee shop, single origin beans"
+  },
+  contact: {
+    whatsapp: "6281234567890", // Ganti dengan nomor asli
+    maps: "https://goo.gl/maps/example",
+    address: "123 Minimalism Ave, Austin, TX"
+  },
   hero: {
     badge: "Since 2024 — Origin Focused",
     title: "Pure",
@@ -9,7 +19,29 @@ export const SITE_CONFIG: SiteConfig = {
     cta: "Explore Menu",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCW9LgEvQjzVLK2bW57TVokL8RgzMq08ZgXcRFPuPGcOHMynMPOD19VeCiYul5MHUPoiK_0XLUIAYRgGICmn-4D1nkph9fafQqea7G_vf4UT2MbDujcT1aNsvuts9ci9PHO-aYBORRfpwUnx_vHc4k7AVSGzxvCNuLsnooyr8HxwqUYPOoRYDcMTg85nV-CL0xABIUUkM4CWyUiCkoRpWSzxBgc0yHLUWi5elPmanPVQsaVJZIX6pZRkJwCqu6qDClXWSYGnvVpQJKX"
   },
+  menu: {
+    badge: "The Collection",
+    title: "Seasonal",
+    subtitle: "Selection",
+    categories: [
+      {
+        name: "Black",
+        items: [
+          { name: "Ethiopia Guji", price: "$5.5", description: "Jasmine, Peach, Bergamot" },
+          { name: "Colombia Huila", price: "$5.0", description: "Chocolate, Red Apple, Panela" }
+        ]
+      },
+      {
+        name: "White",
+        items: [
+          { name: "Flat White", price: "$4.5", description: "Double shot, silky microfoam" },
+          { name: "Cortado", price: "$4.0", description: "1:1 ratio, intense & creamy" }
+        ]
+      }
+    ]
+  },
   about: {
+// ... rest of the config
     badge: "Our Philosophy",
     title: "Minimalist",
     subtitle: "Complexity.",

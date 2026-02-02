@@ -4,7 +4,41 @@ import { SiteConfig } from './types';
 export const SITE_CONFIG: SiteConfig = {
   name: "Brew & Co",
   tagline: "Artisanal Story & Shop",
+  seo: {
+    title: "Brew & Co | Artisanal Story & Shop",
+    description: "Discover the journey of coffee from soil to cup. Shop our artisanal roasts and experience true craftsmanship.",
+    keywords: "artisanal coffee, coffee roastery, specialty coffee beans, brew guide"
+  },
+  contact: {
+    whatsapp: "6281234567890",
+    maps: "https://goo.gl/maps/example",
+    address: "456 Artisan Way, Austin, TX"
+  },
+  menu: {
+    badge: "The Full List",
+    title: "Our Coffee",
+    subtitle: "Selection",
+    categories: [
+      {
+        name: "Hand Brew",
+        items: [
+          { name: "V60 Pour Over", price: "$6.0", description: "Choice of seasonal single origin beans." },
+          { name: "Japanese Iced", price: "$6.5", description: "Flash-chilled for bright acidity." },
+          { name: "Chemex for Two", price: "$11.0", description: "Clean, crisp, and perfect for sharing." }
+        ]
+      },
+      {
+        name: "Espresso Based",
+        items: [
+          { name: "Oat Milk Latte", price: "$5.5", description: "Creamy, nutty, and naturally sweet." },
+          { name: "Espresso Tonic", price: "$5.0", description: "Refreshing with a citrus twist." },
+          { name: "The Signature", price: "$6.0", description: "Our secret blend with hints of spice." }
+        ]
+      }
+    ]
+  },
   hero: {
+// ... rest of the config
     badge: "Small Batch • Artisanal Roast",
     title: "Purely",
     subtitle: "Artisanal.",
@@ -159,7 +193,7 @@ export const SITE_CONFIG: SiteConfig = {
 
 export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "#hero" },
-  { label: "Collections", href: "#shop" },
+  { label: "Collections", href: "#full-menu" },
   { label: "Our Story", href: "#about" },
   { label: "Community", href: "#testimonials" }
 ];

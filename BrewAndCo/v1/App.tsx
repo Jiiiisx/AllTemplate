@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Menu from './components/Menu';
 import TracingPath from './components/TracingPath';
 import Gallery from './components/Gallery';
 import Testimonials from './components/Testimonials';
@@ -40,6 +41,7 @@ const App: React.FC = () => {
       <main>
         <Hero />
         <About />
+        <Menu />
         <TracingPath />
         <Gallery />
         <Testimonials />

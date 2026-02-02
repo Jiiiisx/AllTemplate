@@ -2,11 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { SITE_CONFIG, NAV_LINKS } from '../constants';
 
-interface NavbarProps {
-  cartCount: number;
-}
+interface NavbarProps {}
 
-const Navbar: React.FC<NavbarProps> = ({ cartCount }) => {
+const Navbar: React.FC<NavbarProps> = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -37,15 +35,12 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount }) => {
           ))}
         </ul>
         <div className="flex items-center gap-4 md:gap-8">
-          <button className="hidden sm:block text-[11px] tracking-[0.3em] font-bold border-b border-espresso pb-1 hover:text-clay hover:border-clay transition-all uppercase">
+          <a 
+            href="#full-menu"
+            className="hidden sm:block text-[11px] tracking-[0.3em] font-bold border-b border-espresso pb-1 hover:text-clay hover:border-clay transition-all uppercase"
+          >
             Shop Now
-          </button>
-          <div className="relative cursor-pointer group">
-            <span className="material-symbols-outlined !text-[24px] group-hover:text-clay transition-colors">shopping_bag</span>
-            <span className="absolute -top-1 -right-1 bg-clay text-white text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
-              {cartCount}
-            </span>
-          </div>
+          </a>
           
           <button 
             onClick={toggleMenu}

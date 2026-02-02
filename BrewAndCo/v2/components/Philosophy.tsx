@@ -1,9 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { SITE_CONFIG } from '../constants';
 
 const Philosophy: React.FC = () => {
   const { philosophy } = SITE_CONFIG;
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <section className="py-24 lg:py-48 bg-cream" id="about-philosophy">
@@ -27,12 +28,57 @@ const Philosophy: React.FC = () => {
                 {philosophy.description}
               </p>
               <div className="pt-10 border-t border-espresso/10">
-                <button className="text-espresso text-[11px] tracking-[0.4em] font-bold uppercase border-b-2 border-clay pb-2 hover:text-clay transition-all">{philosophy.cta}</button>
+                <button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="text-espresso text-[11px] tracking-[0.4em] font-bold uppercase border-b-2 border-clay pb-2 hover:text-clay transition-all"
+                >
+                  {philosophy.cta}
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Manifesto Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[500] flex items-center justify-center p-6 md:p-12">
+          <div 
+            className="absolute inset-0 bg-espresso/90 backdrop-blur-md transition-opacity"
+            onClick={() => setIsModalOpen(false)}
+          ></div>
+          <div className="relative bg-cream max-w-3xl w-full max-h-[80vh] overflow-y-auto rounded-3xl p-8 md:p-16 shadow-2xl animate-in zoom-in-95 duration-300">
+            <button 
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-8 right-8 text-espresso/40 hover:text-clay transition-colors"
+            >
+              <span className="material-symbols-outlined !text-3xl">close</span>
+            </button>
+            
+            <div className="space-y-10">
+              <span className="text-clay text-[10px] tracking-[0.5em] font-bold uppercase block">Our Manifesto</span>
+              <h3 className="font-display text-4xl md:text-5xl font-light text-espresso leading-tight">
+                Crafting the Perfect <span className="font-serif italic">Ritual.</span>
+              </h3>
+              <div className="space-y-6 text-espresso/70 text-lg font-light leading-relaxed">
+                <p>
+                  At Brew & Co, we believe coffee is more than just a morning necessity; it is a profound ritual of clarity. Our manifesto is built on the pillars of transparency, terroir, and time.
+                </p>
+                <p>
+                  We strip away the artificial flavorings and marketing noise to reveal the soul of the bean. Every gram of coffee we roast tells the story of the high-altitude soil and the hands that harvested it.
+                </p>
+                <p>
+                  Our commitment is to the science of extraction and the art of hospitality. We build spaces that breathe, allowing your creative focus to thrive alongside our precision-brewed roasts.
+                </p>
+              </div>
+              <div className="pt-8 border-t border-espresso/10 flex justify-between items-center">
+                <span className="font-serif italic text-2xl text-espresso">The Founders</span>
+                <span className="text-[10px] tracking-widest uppercase font-bold text-espresso/30">Est. 2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
