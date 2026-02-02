@@ -1,5 +1,46 @@
+import { Testimonial, GalleryItem, Step, SiteConfig, NavLink } from './types';
 
-import { Testimonial, GalleryItem, Step } from './types';
+export const SITE_CONFIG: SiteConfig = {
+  name: "Brew & Co",
+  hero: {
+    badge: "Since 2024 — Origin Focused",
+    title: "Pure",
+    subtitle: "Extraction.",
+    cta: "Explore Menu",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCW9LgEvQjzVLK2bW57TVokL8RgzMq08ZgXcRFPuPGcOHMynMPOD19VeCiYul5MHUPoiK_0XLUIAYRgGICmn-4D1nkph9fafQqea7G_vf4UT2MbDujcT1aNsvuts9ci9PHO-aYBORRfpwUnx_vHc4k7AVSGzxvCNuLsnooyr8HxwqUYPOoRYDcMTg85nV-CL0xABIUUkM4CWyUiCkoRpWSzxBgc0yHLUWi5elPmanPVQsaVJZIX6pZRkJwCqu6qDClXWSYGnvVpQJKX"
+  },
+  about: {
+    badge: "Our Philosophy",
+    title: "Minimalist",
+    subtitle: "Complexity.",
+    description: "We strip away the noise to focus on the essential. Every roast profile is a study in precision, and every space we build is a canvas for your creative focus.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAV4SDD_OD-N6hvagzhk_akh9aE7IX9_rnq2Sa2cZb_laycWA9mGS2NIKqS_jSqGwyxNe85lN8uj3pdN8RkxQjLDOaEQv_eruKlgGuhKEaBtptWpZcPKz1sQeWTMzW0pdhJAJIWa3eHMD00I3otomwR2cbAxOiY9-_tL0dE5bseEcBNuvF511nf0u5IrVwX9__ljLlplvmMJ-2z9n18EMOHrFj_sXEgI5QoIT829mS6EBsUZZ6no4fqLegVa4WCLJTYngVXzzZ4tDeD",
+    feature: {
+      title: "Single Origin",
+      description: "Directly traded, seasonally harvested beans."
+    }
+  },
+  footer: {
+    description: "Redefining the coffee ritual through minimalist aesthetics and scientific precision. Austin, Texas.",
+    connect: [
+      { label: "Instagram", href: "#" },
+      { label: "Journal", href: "#" },
+      { label: "Wholesale", href: "#" }
+    ],
+    hours: [
+      { days: "Mon — Fri", time: "07 — 20" },
+      { days: "Sat — Sun", time: "08 — 21" }
+    ],
+    copyright: "© 2024 Brew & Co. Coffee Roasters"
+  }
+};
+
+export const NAV_LINKS: NavLink[] = [
+  { label: "Home", href: "#hero" },
+  { label: "Philosophy", href: "#about" },
+  { label: "Visuals", href: "#gallery" },
+  { label: "Community", href: "#testimonials" }
+];
 
 export const TESTIMONIALS: Testimonial[] = [
   {

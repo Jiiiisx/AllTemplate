@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { SITE_CONFIG } from '../constants';
 
 const FeaturedIn: React.FC = () => {
   return (
@@ -7,10 +8,9 @@ const FeaturedIn: React.FC = () => {
       <div className="max-w-[1400px] mx-auto px-10">
         <p className="text-center text-[10px] tracking-[0.4em] uppercase font-bold text-espresso/40 mb-10">Featured In</p>
         <div className="flex flex-wrap justify-center items-center gap-16 md:gap-32 opacity-40 grayscale">
-          <span className="font-serif text-2xl font-bold italic">Vogue</span>
-          <span className="font-serif text-3xl font-bold">GQ</span>
-          <span className="font-serif text-2xl tracking-tighter font-black">BuzzFeed</span>
-          <span className="font-serif text-2xl italic">LIFESTYLE</span>
+          {SITE_CONFIG.featuredIn.map((item, index) => (
+            <span key={index} className="font-serif text-2xl font-bold italic">{item}</span>
+          ))}
         </div>
       </div>
     </div>
