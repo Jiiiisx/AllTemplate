@@ -7,7 +7,6 @@ import TracingPath from './components/TracingPath';
 import Gallery from './components/Gallery';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
-import AIAssistant from './components/AIAssistant';
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -33,7 +32,6 @@ const App: React.FC = () => {
         <Testimonials />
       </main>
       <Footer />
-      <AIAssistant />
     </div>
   );
 };

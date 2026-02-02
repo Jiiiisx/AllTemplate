@@ -22,10 +22,10 @@ const Testimonials: React.FC = () => {
   const { testimonials } = SITE_CONFIG;
 
   return (
-    <section className="py-48 bg-espresso text-cream" id="testimonials">
-      <div className="max-w-[1400px] mx-auto px-10">
-        <div className="flex flex-col lg:flex-row gap-24 items-end mb-40">
-          <h2 className="font-display text-7xl font-extralight tracking-tighter">{testimonials.title} <br/><span className="italic text-clay">{testimonials.subtitle}</span></h2>
+    <section className="py-24 lg:py-48 bg-espresso text-cream" id="testimonials">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start lg:items-end mb-16 lg:mb-40">
+          <h2 className="font-display text-4xl md:text-7xl font-extralight tracking-tighter">{testimonials.title} <br/><span className="italic text-clay">{testimonials.subtitle}</span></h2>
           <p className="max-w-sm text-cream/40 text-lg leading-loose uppercase tracking-[0.2em] font-bold text-[10px]">{testimonials.badge}</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">

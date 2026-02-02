@@ -6,10 +6,10 @@ const Philosophy: React.FC = () => {
   const { philosophy } = SITE_CONFIG;
 
   return (
-    <section className="py-48 bg-cream" id="about-philosophy">
-      <div className="max-w-[1400px] mx-auto px-10">
-        <div className="magazine-grid items-center">
-          <div className="col-span-12 lg:col-span-6 relative">
+    <section className="py-24 lg:py-48 bg-cream" id="about-philosophy">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+          <div className="lg:col-span-6 relative">
             <div className="image-reveal aspect-[4/5] overflow-hidden rounded-2xl shadow-xl">
               <img 
                 alt={philosophy.title} 
@@ -19,10 +19,10 @@ const Philosophy: React.FC = () => {
             </div>
             <span className="material-symbols-outlined drifting-bean !text-[60px] -bottom-10 -left-10 text-clay">spa</span>
           </div>
-          <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
+          <div className="lg:col-span-6 flex flex-col justify-center">
             <div className="lg:pl-20">
               <span className="text-clay text-[11px] tracking-[0.5em] font-bold uppercase block mb-8">{philosophy.badge}</span>
-              <h2 className="font-display text-6xl font-light mb-10 leading-[1.1]">{philosophy.title} <br/><span className="font-serif italic">{philosophy.subtitle}</span></h2>
+              <h2 className="font-display text-4xl md:text-6xl font-light mb-10 leading-[1.1]">{philosophy.title} <br/><span className="font-serif italic">{philosophy.subtitle}</span></h2>
               <p className="text-espresso/70 text-lg leading-loose font-light mb-12">
                 {philosophy.description}
               </p>

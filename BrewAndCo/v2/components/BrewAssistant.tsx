@@ -45,7 +45,7 @@ const BrewAssistant: React.FC = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="absolute bottom-20 right-0 w-[350px] sm:w-[400px] h-[500px] bg-cream border border-espresso/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-10 duration-300">
+        <div className="absolute bottom-20 right-0 w-[calc(100vw-2.5rem)] sm:w-[400px] h-[500px] bg-cream border border-espresso/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-10 duration-300">
           {/* Header */}
           <div className="p-6 bg-espresso text-white flex items-center justify-between">
             <div>

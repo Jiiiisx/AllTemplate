@@ -6,9 +6,9 @@ const OurStory: React.FC = () => {
   const { story } = SITE_CONFIG;
 
   return (
-    <section className="py-48 bg-tan/20" id="about">
-      <div className="max-w-[1400px] mx-auto px-10">
-        <div className="flex flex-col lg:flex-row items-center gap-24">
+    <section className="py-24 lg:py-48 bg-tan/20" id="about">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           <div className="w-full lg:w-1/2">
             <div className="organic-shape bg-clay p-4 relative">
               <img 
@@ -21,8 +21,8 @@ const OurStory: React.FC = () => {
           </div>
           <div className="w-full lg:w-1/2">
             <span className="text-clay text-[11px] tracking-[0.5em] font-bold uppercase block mb-8">{story.badge}</span>
-            <h2 className="font-display text-6xl font-light mb-10 leading-tight">{story.title.split(' ')[0]} <br/><span className="font-serif italic">{story.title.split(' ').slice(1).join(' ')}</span></h2>
-            <p className="text-espresso/80 text-xl font-light leading-relaxed italic mb-8">
+            <h2 className="font-display text-4xl md:text-6xl font-light mb-8 lg:mb-10 leading-tight">{story.title.split(' ')[0]} <br/><span className="font-serif italic">{story.title.split(' ').slice(1).join(' ')}</span></h2>
+            <p className="text-espresso/80 text-lg md:text-xl font-light leading-relaxed italic mb-8">
               "{story.quote}"
             </p>
             <p className="text-espresso/60 text-lg leading-relaxed font-light mb-12">

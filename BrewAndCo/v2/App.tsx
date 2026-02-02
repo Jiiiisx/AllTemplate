@@ -10,7 +10,6 @@ import OurStory from './components/OurStory';
 import VisualJournal from './components/VisualJournal';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
-import BrewAssistant from './components/BrewAssistant';
 
 const App: React.FC = () => {
   const [cartCount, setCartCount] = useState(0);
@@ -35,9 +34,6 @@ const App: React.FC = () => {
       </main>
 
       <Footer />
-      
-      {/* AI Brew Assistant - Value add feature */}
-      <BrewAssistant />
     </div>
   );
 };

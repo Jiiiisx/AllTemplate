@@ -4,7 +4,7 @@ import { GALLERY_ITEMS } from '../constants';
 
 const Gallery: React.FC = () => {
   return (
-    <section className="py-32 lg:py-64" id="gallery">
+    <section className="py-20 lg:py-64" id="gallery">
       <div className="max-w-[1600px] mx-auto px-6 md:px-10">
         <div className="grid grid-cols-12 gap-6 lg:gap-12">
           {GALLERY_ITEMS.map((item, idx) => (

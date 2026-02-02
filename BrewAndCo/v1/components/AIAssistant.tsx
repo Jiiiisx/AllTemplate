@@ -64,7 +64,7 @@ const AIAssistant: React.FC = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-8 z-[200] w-[350px] md:w-[400px] h-[500px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl rounded-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
+        <div className="fixed bottom-24 right-4 sm:right-8 z-[200] w-[calc(100vw-2rem)] sm:w-[350px] md:w-[400px] h-[500px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl rounded-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
           <div className="p-6 bg-primary text-white border-b border-white/10 flex justify-between items-center">
             <div>
               <h3 className="text-sm font-bold tracking-[0.2em] uppercase">Brew Assistant</h3>

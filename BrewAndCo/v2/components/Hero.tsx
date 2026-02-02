@@ -15,11 +15,11 @@ const Hero: React.FC = () => {
         />
         <div className="absolute inset-0 bg-espresso/30"></div>
       </div>
-      <div className="relative z-10 max-w-[1600px] mx-auto px-10 w-full text-center">
-        <span className="inline-block text-[12px] font-bold tracking-[0.6em] uppercase mb-12 text-white/90">
+      <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-10 w-full text-center">
+        <span className="inline-block text-[12px] font-bold tracking-[0.6em] uppercase mb-8 md:mb-12 text-white/90">
           {hero.badge}
         </span>
-        <h1 className="font-display text-huge font-light text-white mb-16 tracking-tighter">
+        <h1 className="font-display text-4xl sm:text-6xl md:text-huge font-light text-white mb-12 md:mb-16 tracking-tighter leading-tight">
           {hero.title} <br/> <span className="font-serif italic font-extralight">{hero.subtitle}</span>
         </h1>
         <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">

@@ -31,11 +31,11 @@ const Shop: React.FC<ShopProps> = ({ onAddToCart }) => {
   const { shop } = SITE_CONFIG;
 
   return (
-    <section className="py-48 bg-white" id="shop">
-      <div className="max-w-[1400px] mx-auto px-10">
-        <div className="text-center mb-32">
+    <section className="py-24 lg:py-48 bg-white" id="shop">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+        <div className="text-center mb-16 lg:mb-32">
           <span className="text-clay text-[11px] tracking-[0.5em] font-bold uppercase block mb-6">{shop.badge}</span>
-          <h2 className="font-display text-5xl font-light tracking-tight">{shop.title}</h2>
+          <h2 className="font-display text-4xl md:text-5xl font-light tracking-tight">{shop.title}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {shop.products.map((product) => (

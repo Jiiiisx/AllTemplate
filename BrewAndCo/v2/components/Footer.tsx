@@ -6,9 +6,9 @@ const Footer: React.FC = () => {
   const { footer, name } = SITE_CONFIG;
 
   return (
-    <footer className="bg-espresso text-cream py-40">
-      <div className="max-w-[1600px] mx-auto px-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-24 mb-32">
+    <footer className="bg-espresso text-cream py-24 lg:py-40">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24 mb-20 lg:mb-32">
           <div className="space-y-12">
             <span className="font-display font-light text-2xl tracking-[0.3em] text-white uppercase">{name}</span>
             <p className="text-cream/50 text-sm leading-loose max-w-xs font-light">

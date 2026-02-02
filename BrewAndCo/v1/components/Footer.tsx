@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   const { footer, name } = SITE_CONFIG;
 
   return (
-    <footer className="bg-white dark:bg-background-dark py-20 lg:py-40 border-t border-slate-100 dark:border-slate-900">
+    <footer className="bg-white dark:bg-background-dark py-16 lg:py-40 border-t border-slate-100 dark:border-slate-900">
       <div className="max-w-[1600px] mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24 mb-20 lg:mb-32">
           <div className="space-y-12">
