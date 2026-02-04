@@ -1,0 +1,31 @@
+STANDARD LICENSE AGREEMENT
+
+Product: Brew & Co - Modern Coffee Template (v1)
+License Type: Single Use / Commercial License
+
+By purchasing and downloading this template, you agree to the following terms:
+
+1. GRANT OF LICENSE
+This license grants you a non-exclusive, non-transferable right to use this template to create one (1) end product for yourself or for one client.
+
+2. PERMITTED USES
+- You may use the template for personal or commercial projects.
+- You may modify the code and design to suit your needs.
+- You may deploy the end product to a production environment (web hosting).
+
+3. RESTRICTIONS
+- You CANNOT redistribute, sublicense, or resell the source code "as is" or as a derivative template/theme.
+- You CANNOT include the source code in any software, tool, or repository that allows others to download or use the template.
+- You CANNOT claim ownership of the original design or code structure.
+
+4. INTELLECTUAL PROPERTY
+The original author retains all ownership and copyright of the source code and design elements.
+
+5. NO WARRANTY
+The template is provided "as is" without warranty of any kind. The author is not liable for any damages resulting from the use or inability to use this product.
+
+6. TERMINATION
+This license is automatically terminated if you breach any of these terms.
+
+---
+Copyright (c) 2026. All rights reserved.
