@@ -4,17 +4,17 @@ const services = [
   {
     title: "Specialty Coffee Brewing",
     description: "We brew every cup with precision, using selected beans and the right technique to bring out rich aroma and balanced flavors you'll love.",
-    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80"
   },
   {
     title: "Professional Barista Service",
     description: "Handled by skilled baristas who understand coffee inside out — from grinding, extracting, to presenting every cup perfectly.",
-    image: "https://images.unsplash.com/photo-1570968015849-fb983147728f?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80"
   },
   {
     title: "Premium Coffee Beans",
     description: "Only high-quality beans, freshly roasted and carefully selected, ensuring authentic taste and consistent quality in every sip.",
-    image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=600&q=80"
   }
 ];
 
@@ -44,6 +44,7 @@ const Services: React.FC = () => {
                    <img 
                     src={service.image} 
                     alt={service.title}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                    />
                 </div>

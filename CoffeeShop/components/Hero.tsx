@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80" 
+          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80" 
           alt="Modern Coffee Shop"
           className="w-full h-full object-cover"
         />
@@ -29,6 +29,16 @@ const Hero: React.FC = () => {
             OUR STORY
           </button>
         </div>
+      </div>
+
+      {/* Floating Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
+        <div className="absolute top-[20%] left-[10%] w-12 h-12 bg-primary/20 blur-xl rounded-full animate-float"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-24 h-24 bg-primary/10 blur-2xl rounded-full animate-float-delayed"></div>
+        
+        {/* Simulated Coffee Beans */}
+        <div className="absolute top-[15%] right-[15%] w-8 h-10 bg-[#2B1B17] rounded-full rotate-45 opacity-40 animate-float hidden md:block"></div>
+        <div className="absolute bottom-[25%] left-[15%] w-6 h-8 bg-[#2B1B17] rounded-full -rotate-12 opacity-30 animate-float-delayed hidden md:block"></div>
       </div>
 
       {/* Glass Block Element simulation (optional aesthetic detail from screenshot) */}
