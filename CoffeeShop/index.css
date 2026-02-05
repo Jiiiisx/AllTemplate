@@ -1,0 +1,4 @@
+/* Empty for now as Tailwind is handled via CDN in index.html, but keeping for project consistency */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
