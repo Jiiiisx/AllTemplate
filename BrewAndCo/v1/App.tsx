@@ -11,12 +11,31 @@ import Gallery from './components/Gallery';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
+import AIAssistant from './components/AIAssistant';
+import { SITE_CONFIG } from './constants';
 
 const App: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme === 'dark';
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Dynamic SEO update
+    document.title = SITE_CONFIG.seo.title;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', SITE_CONFIG.seo.description);
+    }
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords) {
+      metaKeywords.setAttribute('content', SITE_CONFIG.seo.keywords);
+    }
+
     // Artificial delay to show loading animation
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -24,8 +43,10 @@ const App: React.FC = () => {
 
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
 
     return () => clearTimeout(timer);
@@ -51,6 +72,7 @@ const App: React.FC = () => {
         <Testimonials />
       </main>
       <Footer />
+      <AIAssistant />
     </div>
   );
 };

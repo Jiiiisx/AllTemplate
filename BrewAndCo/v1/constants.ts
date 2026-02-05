@@ -8,9 +8,9 @@ export const SITE_CONFIG: SiteConfig = {
     keywords: "specialty coffee, austin cafe, minimalist coffee shop, single origin beans"
   },
   contact: {
-    whatsapp: "6281234567890",
+    whatsapp: "6280000000000",
     maps: "https://goo.gl/maps/example",
-    address: "123 Minimalism Ave, Austin, TX"
+    address: "Your Street Name No. 123, Your City"
   },
   hero: {
     badge: "Since 2024 — Origin Focused",

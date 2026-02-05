@@ -50,10 +50,11 @@ const Navbar: React.FC<NavbarProps> = ({ toggleDarkMode }) => {
           <button 
             onClick={toggleDarkMode}
             aria-label="Toggle dark mode"
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors text-primary dark:text-white"
+            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors text-primary dark:text-white flex items-center justify-center w-10 h-10"
           >
-            <span className="material-symbols-outlined !text-[20px] block dark:hidden">dark_mode</span>
-            <span className="material-symbols-outlined !text-[20px] hidden dark:block">light_mode</span>
+            <span className="material-symbols-outlined !text-[20px]">
+              {document.documentElement.classList.contains('dark') ? 'light_mode' : 'dark_mode'}
+            </span>
           </button>
           
           <button 

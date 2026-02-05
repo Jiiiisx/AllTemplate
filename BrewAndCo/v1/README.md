@@ -1,41 +1,35 @@
-# Brew & Co - Modern Coffee Experience Template (v1)
+# Brew & Co Coffee Template
 
-A sleek, dark/light mode compatible landing page template for modern coffee brands. Focuses on the "Ritual" and "Precision" of the coffee-making process.
+Brew & Co is a minimalist React template for coffee shops. It focuses on clean design and performance. The template includes an AI barista assistant to help customers browse the menu.
 
-## ✨ Features
-- **Dark & Light Mode:** Seamless transition between themes.
-- **Story-Driven Layout:** Perfect for brands that want to tell their origin story.
-- **Centralized Data:** All content is managed through `constants.ts`.
-- **Dynamic Gallery:** Masonry-style visual journal for brand atmosphere.
-- **AI Integration:** Includes an AI-powered assistant component.
+**What is inside**
+- Minimalist design
+- AI assistant powered by Google Gemini 2.5 Flash
+- Persistent dark mode
+- Fully responsive for mobile and desktop
+- Content managed through a single file
 
-## 🚀 Getting Started
+**How to start**
+Make sure you have Node.js installed.
 
-### Installation
-1. Navigate to the project directory:
-   ```bash
-   cd v1
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Add your Gemini API Key in `.env.local`:
-   ```env
-   VITE_GEMINI_API_KEY=your_api_key_here
-   ```
-4. Run development server:
-   ```bash
-   npm run dev
-   ```
+1. Install dependencies
+Run npm install in your terminal.
 
-## 🛠 Customization
+2. AI configuration
+Get a free API key from Google AI Studio. Create a file named .env in the root folder and add your key:
+VITE_GEMINI_API_KEY=your_key_here
 
-### Centralized Config
-Edit `src/constants.ts` to update all site content. The code is fully typed with TypeScript to prevent errors during customization.
+3. Run the project
+Run npm run dev to start the local server.
 
-### Styling
-Modify the `tailwind.config` in `index.html` to update global colors (`primary`, `secondary`, `accent`).
+**How to customize**
+You can change the site name, prices, images, and contact info in constants.ts. You do not need to edit complex code files.
 
-## 📄 License
-Commercial template license.
+**Security note**
+Since this is a frontend application, your API key is visible in the browser. You should restrict your key to your own domain in the Google Cloud Console to prevent others from using it.
+
+**Deployment**
+This template works with Vercel or Netlify. Add your VITE_GEMINI_API_KEY to the environment variables in your hosting dashboard.
+
+---
+Designed for a modern coffee experience.

@@ -1,8 +1,0 @@
-
-{
-  "name": "Brew & Co. Artisanal Coffee",
-  "description": "A high-end, minimalist artisanal coffee shop and story-driven brand experience featuring specialty roasts and AI-powered brewing guides.",
-  "requestFramePermissions": [
-    "microphone"
-  ]
-}
