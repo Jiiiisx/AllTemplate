@@ -12,76 +12,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     
-    <!-- Tailwind Configuration First -->
-    <script>
-        window.tailwindConfig = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            gold: "#C5A25D",
-                            dark: "#000000",
-                        },
-                    },
-                    fontFamily: {
-                        sans: ["Plus Jakarta Sans", "sans-serif"],
-                        serif: ["Playfair Display", "serif"],
-                    },
-                },
-            },
-        };
-    </script>
-
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
-    
-    <script>
-        // Apply config to tailwind
-        tailwind.config = window.tailwindConfig;
-    </script>
-
-    <style type="text/tailwindcss">
-        :root {
-            --primary: #C5A25D;
-            --bg-dark: #000000;
-        }
-        @layer base {
-            body {
-                @apply bg-black text-white font-sans;
-            }
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
         .font-heritage {
             font-family: 'Playfair Display', serif;
             font-style: italic;
         }
-        .nav-link {
-            @apply text-[10px] tracking-[0.2em] font-bold uppercase hover:text-brand-gold transition-colors;
-        }
     </style>
-
-    <!-- Fallback CSS in case CDN fails -->
-    <style>
-        body {
-            background-color: #000000 !important;
-            color: #ffffff !important;
-            margin: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-    </style>
-
-    <script type="importmap">
-    {
-      "imports": {
-        "react/": "https://esm.sh/react@^19.2.4/",
-        "react": "https://esm.sh/react@^19.2.4",
-        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-        "@google/genai": "https://esm.sh/@google/genai@^1.39.0"
-      }
-    }
-    </script>
 </head>
-<body class="antialiased overflow-x-hidden">
+  <body class="antialiased overflow-x-hidden">
+
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
 </body>

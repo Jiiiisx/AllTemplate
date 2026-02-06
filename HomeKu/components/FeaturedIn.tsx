@@ -1,11 +1,11 @@
 
 import React from 'react';
 
-const FeaturedIn: React.FC = () => {
+export default function FeaturedIn() {
   const logos = ["FORBES", "ARCHI", "DWELL", "VOGUE"];
   
   return (
-    <section className="py-20 border-t border-white/10 bg-black">
+    <section className="py-20 border-t border-theme transition-colors">
       <div className="container mx-auto px-8">
         <p className="text-[10px] text-zinc-500 tracking-[0.4em] font-bold uppercase text-center mb-12">
           AS SEEN ON
@@ -20,6 +20,4 @@ const FeaturedIn: React.FC = () => {
       </div>
     </section>
   );
-};
-
-export default FeaturedIn;
+}
