@@ -57,10 +57,21 @@ export default function PropertyAssistant({ property }: PropertyAssistantProps) 
 User Question: ${userMessage}`;
       const result = await model.generateContent(prompt);
       const response = await result.response;
+      const text = response.text();
       
-      setMessages(prev => [...prev, { role: 'ai', text: response.text() }]);
-    } catch (error) {
-      setMessages(prev => [...prev, { role: 'ai', text: "I apologize, but I am having trouble connecting to my service. Please try again later." }]);
+      if (!text) throw new Error("Empty response from AI");
+
+      setMessages(prev => [...prev, { role: 'ai', text: text }]);
+    } catch (error: any) {
+      console.error("HomeKu AI Error:", error);
+      
+      let errorMessage = "I apologize, but I am having trouble connecting to my service. Please try again later.";
+      
+      if (error?.message?.includes('API_KEY_INVALID')) {
+        errorMessage = "I apologize, but there seems to be a configuration issue with my connection. Please contact support or check the API configuration.";
+      }
+
+      setMessages(prev => [...prev, { role: 'ai', text: errorMessage }]);
     } finally {
       setLoading(false);
     }
