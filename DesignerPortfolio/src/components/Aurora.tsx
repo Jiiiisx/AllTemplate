@@ -1,5 +1,6 @@
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
 import { useEffect, useRef } from 'react';
+import { siteData } from '../data/config';
 
 const VERT = `#version 300 es
 in vec2 position;
@@ -79,7 +80,6 @@ void main() {
   colors[2] = ColorStop(uColor3, 1.0);
   
   vec3 rampColor;
-  // Simple Color Ramp logic
   if (uv.x < 0.5) {
     rampColor = mix(colors[0].color, colors[1].color, uv.x * 2.0);
   } else {
@@ -102,6 +102,19 @@ void main() {
 
 export default function Aurora(props: any) {
   const { colorStops = ['#7cff67', '#B19EEF', '#5227FF'], amplitude = 1.0, blend = 0.5 } = props;
+  
+  if (siteData.theme.lowPerformanceMode) {
+    return (
+      <div 
+        className="absolute inset-0 w-full h-full opacity-30" 
+        style={{
+          background: `linear-gradient(45deg, ${colorStops[0]}, ${colorStops[1]}, ${colorStops[2]})`,
+          filter: 'blur(80px)'
+        }}
+      />
+    );
+  }
+
   const propsRef = useRef(props);
   propsRef.current = props;
 
