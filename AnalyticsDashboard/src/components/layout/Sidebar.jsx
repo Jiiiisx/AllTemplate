@@ -1,7 +1,6 @@
-
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Activity, Zap, LogOut, X } from "lucide-react";
+import { Activity, Zap, LogOut, X, LayoutGrid } from "lucide-react";
 import { siteConfig } from "../../data/config";
 
 const Sidebar = ({ isDarkMode, isOpen, setIsOpen }) => {
@@ -60,20 +59,13 @@ const Sidebar = ({ isDarkMode, isOpen, setIsOpen }) => {
           })}
         </nav>
 
-        {/* UPGRADE PRO BANNER */}
-        <div className="bg-zinc-900 p-6 rounded-[2rem] relative overflow-hidden group mb-8 shadow-2xl shadow-zinc-300">
-          <div className="absolute top-0 right-0 w-20 h-20 bg-accent/20 blur-2xl rounded-full -mr-10 -mt-10 group-hover:bg-accent/40 transition-all"></div>
-          <div className="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center text-accent mb-4">
-            <Zap size={16} />
-          </div>
-          <p className="text-white text-xs font-bold mb-1 relative z-10">Upgrade to Pro</p>
-          <p className="text-zinc-500 text-[10px] mb-4 relative z-10 font-medium">Get unlimited AI insights and custom exports.</p>
-          <button className="w-full py-2.5 bg-white text-black text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-accent hover:text-white transition-all relative z-10">
-            Learn More
-          </button>
-        </div>
-
-        <div className="pt-6 border-t border-zinc-100/10">
+        <div className="pt-6 border-t border-zinc-100/10 space-y-2">
+          <Link 
+            to="/workspaces"
+            className="w-full flex items-center gap-3 px-4 py-3 text-zinc-400 hover:text-accent rounded-2xl text-sm font-medium transition-colors"
+          >
+            <LayoutGrid size={18} /> Switch Workspace
+          </Link>
           <button className="w-full flex items-center gap-3 px-4 py-3 text-zinc-400 hover:text-red-500 rounded-2xl text-sm font-medium transition-colors">
             <LogOut size={18} /> Logout
           </button>

@@ -1,10 +1,9 @@
-
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import RightSidebar from "./RightSidebar";
 
-const MainLayout = ({ children, isDarkMode, setIsDarkMode }) => {
+const MainLayout = ({ children, isDarkMode, setIsDarkMode, viewMode, setViewMode }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
@@ -26,6 +25,8 @@ const MainLayout = ({ children, isDarkMode, setIsDarkMode }) => {
           isDarkMode={isDarkMode} 
           setIsDarkMode={setIsDarkMode} 
           setIsSidebarOpen={setIsSidebarOpen}
+          viewMode={viewMode}
+          setViewMode={setViewMode}
         />
 
         {/* INNER CONTENT */}

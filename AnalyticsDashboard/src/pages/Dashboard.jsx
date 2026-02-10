@@ -4,9 +4,10 @@ import { siteConfig } from '../data/config';
 import { statsHistory, chartDataHistory } from '../data/statsData';
 import StatCard from '../components/StatCard';
 import RevenueChart from '../components/RevenueChart';
-import { Star, TrendingUp, Github, ExternalLink } from 'lucide-react';
+import CodeHeatmap from '../components/CodeHeatmap';
+import { Star, TrendingUp, Github, ExternalLink, ShieldAlert, Lock } from 'lucide-react';
 
-const Dashboard = () => {
+const Dashboard = ({ viewMode, isDarkMode }) => {
   const [timeframe, setTimeframe] = useState('7D');
 
   return (
@@ -19,18 +20,22 @@ const Dashboard = () => {
       <header className="mb-12 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6">
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <span className="bg-accent/10 text-accent text-[8px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></div>
-              Community Pulse
+            <span className={`text-[8px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full flex items-center gap-2 ${viewMode === 'private' ? 'bg-red-500/10 text-red-500' : 'bg-accent/10 text-accent'}`}>
+              <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${viewMode === 'private' ? 'bg-red-500' : 'bg-accent'}`}></div>
+              {viewMode === 'private' ? 'Internal Management' : 'Community Pulse'}
             </span>
             <span className="text-zinc-300 text-[10px]">•</span>
-            <span className="text-zinc-400 text-[10px] font-bold uppercase tracking-widest">Main Repository: v3.2-stable</span>
+            <span className="text-zinc-400 text-[10px] font-bold uppercase tracking-widest">v3.2-stable</span>
           </div>
           <h1 className="text-4xl font-bold text-zinc-800 dark:text-white tracking-tighter transition-colors flex items-center gap-4">
-            Project Overview 
+            {viewMode === 'private' ? 'Maintainer Dashboard' : 'Project Overview'}
             <a href="#" className="text-zinc-300 hover:text-accent transition-colors"><Github size={24} /></a>
           </h1>
-          <p className="text-zinc-400 text-sm mt-2 font-medium">Monitoring documentation coverage and community tasks velocity.</p>
+          <p className="text-zinc-400 text-sm mt-2 font-medium">
+            {viewMode === 'private' 
+              ? 'Accessing private metrics, security logs, and internal system configurations.' 
+              : 'Monitoring documentation coverage and community tasks velocity.'}
+          </p>
         </div>
 
         <div className="flex bg-white dark:bg-zinc-900 p-1.5 rounded-2xl border border-zinc-100 dark:border-zinc-800 shadow-sm transition-colors">
@@ -50,22 +55,45 @@ const Dashboard = () => {
         </div>
       </header>
 
-      {/* Baris kartu Stats dengan Animasi Transisi */}
+      {/* HEATMAP HANYA MUNCUL DI GLOBAL VIEW */}
+      {viewMode === 'public' && (
+        <div className="mb-12">
+          <CodeHeatmap isDarkMode={isDarkMode} />
+        </div>
+      )}
+
+      {/* Baris kartu Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           {statsHistory[timeframe].map((stat, i) => (
             <motion.div
-              key={`${timeframe}-${i}`}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3, delay: i * 0.1 }}
+              key={`${viewMode}-${timeframe}-${stat.title}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3, delay: i * 0.05 }}
             >
               <StatCard {...stat} />
             </motion.div>
           ))}
         </AnimatePresence>
       </div>
+
+      {/* PRIVATE WIDGET (Security Audit) */}
+      {viewMode === 'private' && (
+        <div className="mb-12 bg-red-500/5 border border-red-500/20 p-10 rounded-[2.5rem] flex flex-col lg:flex-row items-center gap-10">
+          <div className="w-20 h-20 bg-red-500 rounded-3xl flex items-center justify-center text-white shrink-0 shadow-2xl shadow-red-500/40">
+            <ShieldAlert size={40} />
+          </div>
+          <div className="flex-1 text-center lg:text-left">
+            <h3 className="text-2xl font-bold text-red-600 dark:text-red-400 mb-2 tracking-tight">Security Audit Required</h3>
+            <p className="text-zinc-500 text-sm max-w-xl">We detected 3 high-severity vulnerabilities in 'core-api-node' dependencies. Immediate update recommended to prevent data leakage.</p>
+          </div>
+          <button className="bg-red-600 text-white px-10 py-5 rounded-2xl text-xs font-bold uppercase tracking-[0.2em] hover:bg-red-700 transition-all shadow-xl shadow-red-500/20 shrink-0">
+            Fix Issues Now
+          </button>
+        </div>
+      )}
 
       {/* AI DOCS AUDITOR WIDGET */}
       <div className="mb-12 relative group">
@@ -90,31 +118,34 @@ const Dashboard = () => {
             <button className="bg-zinc-900 text-white dark:bg-white dark:text-black px-10 py-5 rounded-2xl text-xs font-bold uppercase tracking-[0.2em] hover:bg-accent hover:text-white transition-all shadow-2xl shadow-zinc-200">
               Generate Tasks
             </button>
-            <button className="text-zinc-400 text-[10px] font-bold uppercase tracking-widest hover:text-accent transition-colors flex items-center justify-center gap-2">
-              View Code <ExternalLink size={12} />
-            </button>
           </div>
         </div>
       </div>
 
-      {/* Bagian Grafik Documentation Velocity */}
+      {/* Bagian Grafik */}
       <div className="rounded-[2.5rem] border shadow-sm p-10 mb-12 transition-colors duration-500 bg-white border-zinc-100 dark:bg-zinc-900 dark:border-zinc-800">
         <div className="flex justify-between items-center mb-10">
           <div>
-            <h3 className="text-xl font-bold text-zinc-800 dark:text-white transition-colors">Documentation Velocity</h3>
-            <p className="text-zinc-400 text-[10px] uppercase font-black tracking-[0.2em] mt-2">Coverage growth vs merged commits</p>
+            <h3 className="text-xl font-bold text-zinc-800 dark:text-white transition-colors">
+              {viewMode === 'private' ? 'Internal Traffic Metrics' : 'Documentation Velocity'}
+            </h3>
+            <p className="text-zinc-400 text-[10px] uppercase font-black tracking-[0.2em] mt-2">
+              {viewMode === 'private' ? 'System response time & latency' : 'Coverage growth vs merged commits'}
+            </p>
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-accent rounded-full"></div>
-              <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Coverage %</span>
+              <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
+                {viewMode === 'private' ? 'Latency (ms)' : 'Coverage %'}
+              </span>
             </div>
           </div>
         </div>
         <div className="h-[350px] w-full">
           <AnimatePresence mode="wait">
             <motion.div
-              key={timeframe}
+              key={`${timeframe}-${viewMode}`}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
