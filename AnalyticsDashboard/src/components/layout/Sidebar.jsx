@@ -1,6 +1,8 @@
+
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Activity, Zap, LogOut, X, LayoutGrid } from "lucide-react";
+import { motion } from "framer-motion";
+import { Zap, LogOut, X, LayoutGrid } from "lucide-react";
 import { siteConfig } from "../../data/config";
 
 const Sidebar = ({ isDarkMode, isOpen, setIsOpen }) => {
@@ -23,12 +25,21 @@ const Sidebar = ({ isDarkMode, isOpen, setIsOpen }) => {
       `}>
         <div className="flex items-center justify-between mb-12 px-2">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-accent rounded-2xl flex items-center justify-center text-white shadow-lg shadow-accent/20">
-              <Activity size={22} />
-            </div>
-            <span className={`font-bold text-xl tracking-tight transition-colors ${isDarkMode ? 'text-white' : 'text-zinc-800'}`}>
+            {/* CONTINUITY LOGO TRANSITION */}
+            <motion.div 
+              layoutId="logo-ws-1"
+              className="w-10 h-10 bg-accent rounded-2xl flex items-center justify-center text-white shadow-lg shadow-accent/20"
+            >
+              <img src={siteConfig.avatar} alt="" className="w-full h-full rounded-2xl object-cover" />
+            </motion.div>
+            
+            {/* CONTINUITY TITLE TRANSITION */}
+            <motion.span 
+              layoutId="title-ws-1"
+              className={`font-bold text-xl tracking-tight transition-colors ${isDarkMode ? 'text-white' : 'text-zinc-800'}`}
+            >
               {siteConfig.name}
-            </span>
+            </motion.span>
           </div>
           <button 
             className="lg:hidden text-zinc-400 hover:text-accent transition-colors"

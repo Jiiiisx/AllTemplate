@@ -1,5 +1,7 @@
+
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import MainLayout from "./components/layout/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import Community from "./pages/Community";
@@ -8,7 +10,6 @@ import Repos from "./pages/Repos";
 import Docs from "./pages/Docs";
 import Settings from "./pages/Settings";
 import Workspaces from "./pages/Workspaces";
-import { useLocation } from "react-router-dom";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -34,26 +35,29 @@ function App() {
 
   const isWorkspaceHub = location.pathname === '/workspaces';
 
-  if (isWorkspaceHub) {
-    return <Workspaces />;
-  }
-
   return (
-    <MainLayout 
-      isDarkMode={isDarkMode} 
-      setIsDarkMode={toggleDarkMode}
-      viewMode={viewMode}
-      setViewMode={setViewMode}
-    >
-      <Routes>
-        <Route path="/" element={<Dashboard viewMode={viewMode} isDarkMode={isDarkMode} />} />
-        <Route path="/tasks" element={<Tasks />} />
-        <Route path="/community" element={<Community />} />
-        <Route path="/repos" element={<Repos />} />
-        <Route path="/docs" element={<Docs />} />
-        <Route path="/settings" element={<Settings />} />
-      </Routes>
-    </MainLayout>
+    <AnimatePresence mode="wait">
+      {isWorkspaceHub ? (
+        <Workspaces key="workspaces" />
+      ) : (
+        <MainLayout 
+          key="main-layout"
+          isDarkMode={isDarkMode} 
+          setIsDarkMode={toggleDarkMode}
+          viewMode={viewMode}
+          setViewMode={setViewMode}
+        >
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Dashboard viewMode={viewMode} isDarkMode={isDarkMode} />} />
+            <Route path="/tasks" element={<Tasks />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/repos" element={<Repos />} />
+            <Route path="/docs" element={<Docs />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </MainLayout>
+      )}
+    </AnimatePresence>
   );
 }
 
