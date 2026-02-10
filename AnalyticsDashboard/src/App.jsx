@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "./components/layout/MainLayout";
 import Dashboard from "./pages/Dashboard";
-import Customers from "./pages/Customers";
-import PlaceholderPage from "./pages/PlaceholderPage";
+import Community from "./pages/Community";
+import Tasks from "./pages/Tasks";
+import Repos from "./pages/Repos";
+import Docs from "./pages/Docs";
+import Settings from "./pages/Settings";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -20,9 +23,11 @@ function App() {
     <MainLayout isDarkMode={isDarkMode} setIsDarkMode={toggleDarkMode}>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/customers" element={<Customers />} />
-        <Route path="/projects" element={<PlaceholderPage title="Projects Overview" />} />
-        <Route path="/settings" element={<PlaceholderPage title="System Settings" />} />
+        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/community" element={<Community />} />
+        <Route path="/repos" element={<Repos />} />
+        <Route path="/docs" element={<Docs />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </MainLayout>
   );

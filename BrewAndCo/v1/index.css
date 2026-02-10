@@ -1,53 +1,12 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Memberitahu Tailwind v4 untuk mendukung toggle manual via class .dark */
-@custom-variant dark (&:where(.dark, .dark *));
-
-@theme {
-  --color-primary: #2d241e;
-  --color-secondary: #c9a07e;
-  --color-accent: #fcfaf7;
-  --color-background-light: #ffffff;
-  --color-background-dark: #0a0a0a;
-
-  --font-display: "Outfit", sans-serif;
-  --font-sans: "Plus Jakarta Sans", sans-serif;
-}
-
-@utility nav-blur {
-  @apply backdrop-blur-[20px];
-  -webkit-backdrop-filter: blur(20px);
-}
-
-@utility text-huge {
-  font-size: clamp(3.5rem, 8vw, 9rem);
-  line-height: 0.9;
-}
-
-@utility image-reveal {
-  @apply overflow-hidden;
-  & img {
-    @apply transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)];
-  }
-  &:hover img {
-    @apply scale-[1.05];
-  }
-}
-
-@utility floating-element {
-  @apply transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)];
-  &:hover {
-    @apply -translate-y-[20px];
-  }
-}
-
-/* Base Styles */
 @layer base {
   body {
     @apply bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-sans selection:bg-secondary/30 antialiased transition-colors duration-500;
   }
 
-  /* Fix for Material Symbols flashing as text */
   .material-symbols-outlined {
     font-display: block;
     font-family: 'Material Symbols Outlined';
@@ -63,15 +22,35 @@
     direction: ltr;
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
-    
-    /* Make the text invisible until the font loads */
-    color: transparent;
-    width: 1em;
-    height: 1em;
+    color: inherit;
+  }
+}
+
+@layer utilities {
+  .nav-blur {
+    @apply backdrop-blur-[20px];
+    -webkit-backdrop-filter: blur(20px);
   }
 
-  /* Once the font is loaded, make it visible */
-  .material-symbols-outlined {
-    color: inherit;
+  .text-huge {
+    font-size: clamp(3.5rem, 8vw, 9rem);
+    line-height: 0.9;
+  }
+
+  .image-reveal {
+    @apply overflow-hidden;
+    & img {
+      @apply transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)];
+    }
+    &:hover img {
+      @apply scale-[1.05];
+    }
+  }
+
+  .floating-element {
+    @apply transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)];
+    &:hover {
+      @apply -translate-y-[20px];
+    }
   }
 }

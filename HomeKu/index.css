@@ -1,19 +1,6 @@
-@import "tailwindcss";
-
-@theme {
-  --color-brand-gold: #C5A25D;
-  --color-brand-dark: #000000;
-  --color-brand-light: #F9F7F2; /* Luxury Cream */
-  
-  --color-primary: var(--text-primary);
-  --color-secondary: var(--text-secondary);
-  --color-background: var(--bg-primary);
-  --color-surface: var(--card-bg);
-  --color-border-theme: var(--border-primary);
-
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --bg-primary: #000000;

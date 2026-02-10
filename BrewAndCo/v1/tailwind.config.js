@@ -4,15 +4,15 @@ export default {
     "./index.html",
     "./**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: "class",
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        primary: "#2d241e",
-        secondary: "#c9a07e",
-        accent: "#fcfaf7",
-        "background-light": "#ffffff",
-        "background-dark": "#0a0a0a",
+        primary: '#2d241e',
+        secondary: '#c9a07e',
+        accent: '#fcfaf7',
+        'background-light': '#ffffff',
+        'background-dark': '#0a0a0a',
       },
       fontFamily: {
         display: ["Outfit", "sans-serif"],
