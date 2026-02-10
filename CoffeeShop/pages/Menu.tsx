@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { siteData } from '../constants/siteData';
-import ScrollAnimation from './ui/ScrollAnimation';
+import ScrollAnimation from '../components/ui/ScrollAnimation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';

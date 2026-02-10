@@ -105,16 +105,23 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   {
     url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAIS8fp5uRFtzA7s8xHbfVPimyJmpSfNaC1Pajl8N_yXCtK5V0vhsVLapWdC_UnC93q9UvuZKQb3aCIjO69ZtwSuAcKnKo6cf-gM56lidv5-_VQMpAir6PFub8PaHFKPwA1Llk891iB8K1UVKMmg6ipelVuuipwzVAZ1tW9yz9k9OgIBv2A6Kyomg3-u57a-clB2saJg1zG9QhjvoHIuT6-SyDjZf12sjJ6xinsHB6t_6_08bcFLyEZfq3wjRdLqKezbxSJzaPb5KyH",
     alt: "People socializing",
-    span: "md:col-span-8",
-    height: "h-[600px]",
+    span: "md:col-span-6 lg:col-span-4",
+    height: "h-[400px] md:h-[600px]",
     mt: "mt-0"
   },
   {
     url: "https://lh3.googleusercontent.com/aida-public/AB6AXuBVarGgJ9JLp7TRBz7MQdL7L9s-M1eiA303isNyYYlqacg4eaKQrIiYOSTFYUTneUaVdsDRzKxUzDGraIao1lm61QRfE0o9__guYXPfbm3xKFV53FlNALqjrpzOA9JVql46b68bJXyFoJiV8q3Z0bpNSDENGIDMdzt-MO63yXY77idEcgVw50dFSol4XWtCuCtzJH4ypSiiIlQyLlK9pDB0819YVdDVUVs1NLusA-pgD-KQ_uYcl_KQsO-L_gcv86Zyg5mFtQy7efoK",
     alt: "Latte art",
-    span: "md:col-span-4",
-    height: "h-[600px]",
-    mt: "mt-24 md:mt-12"
+    span: "md:col-span-6 lg:col-span-4",
+    height: "h-[400px] md:h-[600px]",
+    mt: "md:mt-24"
+  },
+  {
+    url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAV4SDD_OD-N6hvagzhk_akh9aE7IX9_rnq2Sa2cZb_laycWA9mGS2NIKqS_jSqGwyxNe85lN8uj3pdN8RkxQjLDOaEQv_eruKlgGuhKEaBtptWpZcPKz1sQeWTMzW0pdhJAJIWa3eHMD00I3otomwR2cbAxOiY9-_tL0dE5bseEcBNuvF511nf0u5IrVwX9__ljLlplvmMJ-2z9n18EMOHrFj_sXEgI5QoIT829mS6EBsUZZ6no4fqLegVa4WCLJTYngVXzzZ4tDeD",
+    alt: "Coffee beans",
+    span: "md:col-span-6 lg:col-span-4",
+    height: "h-[400px] md:h-[600px]",
+    mt: "mt-0 md:mt-12"
   }
 ];
 

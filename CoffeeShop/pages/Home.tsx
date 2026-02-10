@@ -1,12 +1,11 @@
 import React from 'react';
-import Hero from './Hero';
-import Menu from './Menu';
-import Services from './Services';
-import Testimonials from './Testimonials';
-import StoreLocator from './StoreLocator';
-import InstagramGallery from './InstagramGallery';
+import Hero from '../components/Hero';
+import Services from '../components/Services';
+import Testimonials from '../components/Testimonials';
+import StoreLocator from '../components/StoreLocator';
+import InstagramGallery from '../components/InstagramGallery';
 
-const Landing: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <main>
       <Hero />
@@ -18,4 +17,4 @@ const Landing: React.FC = () => {
   );
 };
 
-export default Landing;
+export default Home;
