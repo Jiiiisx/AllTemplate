@@ -40,12 +40,15 @@ const AIAssistant: React.FC = () => {
 
     try {
       const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-      if (!apiKey) throw new Error("API Key missing");
+      
+      if (!apiKey || apiKey === "your_actual_key_here") {
+        throw new Error("MISSING_KEY");
+      }
 
       const genAI = new GoogleGenerativeAI(apiKey);
       
       const model = genAI.getGenerativeModel({ 
-        model: "gemini-2.5-flash",
+        model: "gemini-1.5-flash",
         generationConfig: {
           maxOutputTokens: 150,
           temperature: 0.7,
@@ -60,12 +63,14 @@ const AIAssistant: React.FC = () => {
     } catch (error: any) {
       console.error('AI Error Details:', error);
       
-      let msg = "Maaf, sistem kami sedang mengalami kendala teknis. Silakan coba lagi nanti.";
+      let msg = "I apologize, but I am having trouble connecting to my central extraction database. Please try again later.";
       
-      if (error.message?.includes('404')) {
-        msg = "Error 404: Model 'gemini-2.5-flash' belum tersedia di wilayah atau API Anda.";
+      if (error.message === "MISSING_KEY") {
+        msg = "Brew Assistant setup incomplete. Please add your VITE_GEMINI_API_KEY to the .env file to enable AI features.";
+      } else if (error.message?.includes('404')) {
+        msg = "Coffee service unavailable. The AI model requested could not be found.";
       } else if (error.message?.includes('429')) {
-        msg = "Kuota penggunaan model ini sudah habis atau dibatasi oleh Google.";
+        msg = "I've served too many requests recently. Please give me a moment to recalibrate.";
       }
       
       setMessages(prev => [...prev, { role: 'assistant', text: msg }]);

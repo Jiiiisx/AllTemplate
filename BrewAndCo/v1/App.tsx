@@ -1,5 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Lenis from 'lenis';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import FeaturedIn from './components/FeaturedIn';
@@ -12,6 +14,7 @@ import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
 import AIAssistant from './components/AIAssistant';
+import NotFound from './components/NotFound';
 import { SITE_CONFIG } from './constants';
 
 const App: React.FC = () => {
@@ -23,17 +26,27 @@ const App: React.FC = () => {
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
+    // Smooth Scrolling with Lenis
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
     // Dynamic SEO update
     document.title = SITE_CONFIG.seo.title;
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', SITE_CONFIG.seo.description);
-    }
-    const metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (metaKeywords) {
-      metaKeywords.setAttribute('content', SITE_CONFIG.seo.keywords);
     }
 
     // Artificial delay to show loading animation
@@ -49,7 +62,10 @@ const App: React.FC = () => {
       localStorage.setItem('theme', 'light');
     }
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      lenis.destroy();
+    };
   }, [isDarkMode]);
 
   const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
@@ -58,21 +74,28 @@ const App: React.FC = () => {
     return <LoadingScreen />;
   }
 
+  const isNotFound = !['/'].includes(location.pathname);
+
   return (
     <div className="min-h-screen">
-      <Navbar toggleDarkMode={toggleDarkMode} />
-      <main>
-        <Hero />
-        <FeaturedIn />
-        <About />
-        <FeatureStats />
-        <Menu />
-        <TracingPath />
-        <Gallery />
-        <Testimonials />
-      </main>
-      <Footer />
-      <AIAssistant />
+      {!isNotFound && <Navbar toggleDarkMode={toggleDarkMode} />}
+      <Routes>
+        <Route path="/" element={
+          <main>
+            <Hero />
+            <FeaturedIn />
+            <About />
+            <FeatureStats />
+            <Menu />
+            <TracingPath />
+            <Gallery />
+            <Testimonials />
+          </main>
+        } />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      {!isNotFound && <Footer />}
+      {!isNotFound && <AIAssistant />}
     </div>
   );
 };

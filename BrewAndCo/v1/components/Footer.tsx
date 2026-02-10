@@ -22,6 +22,16 @@ const Footer: React.FC = () => {
               {footer.connect.map((link, index) => (
                 <li key={index}><a className="hover:text-primary transition-colors" href={link.href}>{link.label}</a></li>
               ))}
+              <li>
+                <a 
+                  className="hover:text-primary transition-colors" 
+                  href={`https://wa.me/${SITE_CONFIG.contact.whatsapp}`}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  WhatsApp
+                </a>
+              </li>
             </ul>
           </div>
           
@@ -37,10 +47,12 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-[10px] font-bold uppercase tracking-[0.5em] mb-10 text-secondary">Briefing</h4>
             <form 
-              onSubmit={(e) => { e.preventDefault(); alert('Thank you for subscribing to our briefing.'); }}
+              action="https://formspree.io/f/your_form_id"
+              method="POST"
               className="relative group"
             >
               <input 
+                name="email"
                 className="w-full bg-transparent border-b border-slate-200 dark:border-slate-800 py-3 pr-10 focus:outline-none focus:border-secondary transition-colors text-sm font-light text-primary dark:text-white placeholder:text-slate-400" 
                 placeholder="Email Address" 
                 type="email"
@@ -54,6 +66,7 @@ const Footer: React.FC = () => {
               >
                 <span className="material-symbols-outlined !text-[20px]">east</span>
               </button>
+              <p className="mt-4 text-[8px] text-slate-400 tracking-[0.2em] uppercase italic">Powered by Formspree</p>
             </form>
           </div>
         </div>

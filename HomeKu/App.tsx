@@ -1,20 +1,32 @@
-
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import { Footer } from './components/FooterSections';
+import { Routes, Route } from 'react-router-dom';
+import Lenis from 'lenis';
 import Home from './pages/Home';
 import PropertyDetail from './pages/PropertyDetail';
-import LoadingScreen from './components/LoadingScreen';
+import NotFound from './pages/NotFound';
+import MainLayout from './components/layout/MainLayout';
+import { FavoritesProvider } from './context/FavoritesContext';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [theme, setTheme] = useState<'dark' | 'light'>(
     (localStorage.getItem('theme') as 'dark' | 'light') || 'dark'
   );
-  const location = useLocation();
 
   useEffect(() => {
+    // Smooth Scrolling with Lenis
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
     // Apply theme class to document
     if (theme === 'light') {
       document.documentElement.classList.add('light-mode');
@@ -22,6 +34,10 @@ export default function App() {
       document.documentElement.classList.remove('light-mode');
     }
     localStorage.setItem('theme', theme);
+
+    return () => {
+      lenis.destroy();
+    };
   }, [theme]);
 
   const toggleTheme = () => {
@@ -29,13 +45,10 @@ export default function App() {
   };
 
   useEffect(() => {
-    // Functional Loading Logic
     const handleLoad = () => {
-      // Small timeout to ensure everything is rendered smoothly
       setTimeout(() => setIsLoading(false), 1500);
     };
 
-    // Check if everything is already loaded
     if (document.readyState === 'complete') {
       handleLoad();
     } else {
@@ -45,20 +58,14 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-primary transition-colors duration-500 selection:bg-brand-gold selection:text-black">
-      <LoadingScreen isLoading={isLoading} />
-      
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/property/:id" element={<PropertyDetail />} />
-      </Routes>
-
-      <Footer />
-      
-      {/* Decorative grain overlay for editorial feel */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-    </div>
+    <FavoritesProvider>
+      <MainLayout theme={theme} toggleTheme={toggleTheme} isLoading={isLoading}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/property/:id" element={<PropertyDetail />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </MainLayout>
+    </FavoritesProvider>
   );
 }

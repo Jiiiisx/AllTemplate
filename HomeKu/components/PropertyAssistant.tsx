@@ -24,17 +24,17 @@ export default function PropertyAssistant({ property }: PropertyAssistantProps) 
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const handleSend = async () => {
-    if (!input.trim() || !apiKey) return;
+  const handleSend = async (overrideInput?: string) => {
+    const userMessage = overrideInput || input;
+    if (!userMessage.trim() || !apiKey) return;
 
-    const userMessage = input;
     setMessages(prev => [...prev, { role: 'user', text: userMessage }]);
     setInput('');
     setLoading(true);
 
     try {
       const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
       const context = `
         You are an elite real estate concierge for "HomeKu". 
@@ -67,8 +67,10 @@ User Question: ${userMessage}`;
       
       let errorMessage = "I apologize, but I am having trouble connecting to my service. Please try again later.";
       
-      if (error?.message?.includes('API_KEY_INVALID')) {
-        errorMessage = "I apologize, but there seems to be a configuration issue with my connection. Please contact support or check the API configuration.";
+      if (error?.message?.includes('API_KEY_INVALID') || !apiKey) {
+        errorMessage = "Property Assistant configuration incomplete. Please provide a valid VITE_GEMINI_API_KEY in the .env file.";
+      } else if (error?.message?.includes('404')) {
+        errorMessage = "Service unavailable. The AI model requested could not be found.";
       }
 
       setMessages(prev => [...prev, { role: 'ai', text: errorMessage }]);
@@ -124,90 +126,57 @@ User Question: ${userMessage}`;
                 </div>
               </div>
             )}
-                        <div ref={chatEndRef} />
-                      </div>
-            
-                      {/* Suggested Questions */}
-                      {!loading && apiKey && (
-                        <div className="px-4 py-2 flex gap-2 overflow-x-auto no-scrollbar bg-background/40 backdrop-blur-md border-t border-theme">
-                          {[
-                            "Key amenities?",
-                            "Tell me about the area",
-                            "Is it family friendly?",
-                            "Investment potential?"
-                          ].map((suggestion) => (
-                            <button
-                              key={suggestion}
-                              onClick={() => {
-                                setInput(suggestion);
-                                setTimeout(() => document.getElementById('send-btn')?.click(), 100);
-                              }}
-                              className="whitespace-nowrap px-3 py-1.5 rounded-full border border-theme text-[9px] uppercase tracking-widest text-secondary hover:text-brand-gold hover:border-brand-gold transition-all"
-                            >
-                              {suggestion}
-                            </button>
-                          ))}
-                        </div>
-                      )}
-            
-                                          {/* Input */}
-            
-                                          <div className="p-4 bg-background border-t border-theme">
-            
-                                            {!isKeyValid ? (
-            
-                                              <div className="text-[9px] text-center text-zinc-500 uppercase tracking-[0.2em] leading-relaxed">
-            
-                                                AI Assistant is currently in preview mode.<br />
-            
-                                                Set a valid VITE_GEMINI_API_KEY in .env to enable chat.
-            
-                                              </div>
-            
-                                            ) : (
-            
-                                              <div className="flex gap-2">
-            
-                                                <input 
-            
-                                                  type="text" 
-            
-                                                  value={input}
-            
-                                                  onChange={(e) => setInput(e.target.value)}
-            
-                                                  onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && handleSend()}
-            
-                                                  placeholder="Ask about this property..."
-            
-                                                  className="flex-1 bg-card border border-theme px-4 py-3 text-xs outline-none focus:border-brand-gold transition-colors"
-            
-                                                />
-            
-                                                                                                <button 
-            
-                                                                                                  id="send-btn"
-            
-                                                                                                  onClick={handleSend}
-            
-                                                                                                  className="bg-brand-gold text-black px-4 flex items-center justify-center hover:bg-primary hover:text-background transition-colors"
-            
-                                                                                                >
-            
-                                                                                                  <span className="material-symbols-outlined text-sm font-bold">arrow_upward</span>
-            
-                                                                                                </button>
-            
-                                                
-            
-                                              </div>
-            
-                                            )}
-            
-                                          </div>
-            
-                                
-            
+            <div ref={chatEndRef} />
+          </div>
+
+          {/* Suggested Questions */}
+          {!loading && (
+            <div className="px-4 py-2 flex gap-2 overflow-x-auto no-scrollbar bg-background/40 backdrop-blur-md border-t border-theme">
+              {[
+                "Key amenities?",
+                "Tell me about the area",
+                "Is it family friendly?",
+                "Investment potential?"
+              ].map((suggestion) => (
+                <button
+                  key={suggestion}
+                  onClick={() => handleSend(suggestion)}
+                  disabled={loading}
+                  className="whitespace-nowrap px-3 py-1.5 rounded-full border border-theme text-[9px] uppercase tracking-widest text-secondary hover:text-brand-gold hover:border-brand-gold transition-all disabled:opacity-50"
+                >
+                  {suggestion}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Input */}
+          <div className="p-4 bg-background border-t border-theme">
+            {!apiKey ? (
+              <div className="text-[9px] text-center text-zinc-500 uppercase tracking-[0.2em] leading-relaxed">
+                AI Assistant is currently in preview mode.<br />
+                Set a valid VITE_GEMINI_API_KEY in .env to enable chat.
+              </div>
+            ) : (
+              <div className="flex gap-2">
+                <input 
+                  type="text" 
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && handleSend()}
+                  placeholder="Ask about this property..."
+                  className="flex-1 bg-card border border-theme px-4 py-3 text-xs outline-none focus:border-brand-gold transition-colors"
+                />
+                <button 
+                  onClick={() => handleSend()}
+                  disabled={loading}
+                  className="bg-brand-gold text-black px-4 flex items-center justify-center hover:bg-primary hover:text-background transition-colors disabled:opacity-50"
+                >
+                  <span className="material-symbols-outlined text-sm font-bold">arrow_upward</span>
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
