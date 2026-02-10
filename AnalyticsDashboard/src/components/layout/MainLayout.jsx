@@ -8,7 +8,7 @@ const MainLayout = ({ children, isDarkMode, setIsDarkMode }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className={`h-screen w-full flex font-sans overflow-hidden relative transition-colors duration-500 ${isDarkMode ? 'dark bg-zinc-950 text-white' : 'bg-[#F8F9FB] text-zinc-800'}`}>
+    <div className={`h-screen w-full flex font-sans overflow-hidden relative transition-colors duration-500 ${isDarkMode ? 'bg-zinc-950 text-white' : 'bg-[#F8F9FB] text-zinc-800'}`}>
       
       {/* BACKGROUND DECORATION */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-accent/5 blur-[120px] rounded-full pointer-events-none"></div>

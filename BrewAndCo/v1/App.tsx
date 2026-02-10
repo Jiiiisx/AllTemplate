@@ -1,20 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Lenis from 'lenis';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import FeaturedIn from './components/FeaturedIn';
-import About from './components/About';
-import FeatureStats from './components/FeatureStats';
-import Menu from './components/Menu';
-import TracingPath from './components/TracingPath';
-import Gallery from './components/Gallery';
-import Testimonials from './components/Testimonials';
-import Footer from './components/Footer';
-import LoadingScreen from './components/LoadingScreen';
-import AIAssistant from './components/AIAssistant';
+import Home from './pages/Home';
 import NotFound from './components/NotFound';
+import LoadingScreen from './components/LoadingScreen';
+import MainLayout from './components/layout/MainLayout';
 import { SITE_CONFIG } from './constants';
 
 const App: React.FC = () => {
@@ -26,7 +16,6 @@ const App: React.FC = () => {
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
   const [isLoading, setIsLoading] = useState(true);
-  const location = useLocation();
 
   useEffect(() => {
     // Smooth Scrolling with Lenis
@@ -49,7 +38,6 @@ const App: React.FC = () => {
       metaDescription.setAttribute('content', SITE_CONFIG.seo.description);
     }
 
-    // Artificial delay to show loading animation
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
@@ -74,29 +62,15 @@ const App: React.FC = () => {
     return <LoadingScreen />;
   }
 
-  const isNotFound = !['/'].includes(location.pathname);
-
   return (
-    <div className="min-h-screen">
-      {!isNotFound && <Navbar toggleDarkMode={toggleDarkMode} />}
-      <Routes>
-        <Route path="/" element={
-          <main>
-            <Hero />
-            <FeaturedIn />
-            <About />
-            <FeatureStats />
-            <Menu />
-            <TracingPath />
-            <Gallery />
-            <Testimonials />
-          </main>
-        } />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      {!isNotFound && <Footer />}
-      {!isNotFound && <AIAssistant />}
-    </div>
+    <Routes>
+      <Route path="/" element={
+        <MainLayout toggleDarkMode={toggleDarkMode}>
+          <Home />
+        </MainLayout>
+      } />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 };
 
