@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import RightSidebar from "./RightSidebar";
 
-const MainLayout = ({ children, isDarkMode, setIsDarkMode, viewMode, setViewMode }) => {
+const MainLayout = ({ isDarkMode, setIsDarkMode, viewMode, setViewMode, isCollapsed, setIsCollapsed }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className={`h-screen w-full flex font-sans overflow-hidden relative transition-colors duration-500 ${isDarkMode ? 'bg-zinc-950 text-white' : 'bg-[#F8F9FB] text-zinc-800'}`}>
+    <div className={`h-screen w-full flex font-sans overflow-hidden relative transition-colors duration-300 ${isDarkMode ? 'bg-zinc-950 text-white' : 'bg-[#F8F9FB] text-zinc-800'}`}>
       
       {/* BACKGROUND DECORATION */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
@@ -16,7 +17,9 @@ const MainLayout = ({ children, isDarkMode, setIsDarkMode, viewMode, setViewMode
       <Sidebar 
         isDarkMode={isDarkMode} 
         isOpen={isSidebarOpen} 
-        setIsOpen={setIsSidebarOpen} 
+        setIsOpen={setIsSidebarOpen}
+        isCollapsed={isCollapsed}
+        setIsCollapsed={setIsCollapsed}
       />
 
       {/* Main Content Area */}
@@ -31,11 +34,13 @@ const MainLayout = ({ children, isDarkMode, setIsDarkMode, viewMode, setViewMode
 
         {/* INNER CONTENT */}
         <div className="flex-1 flex overflow-hidden">
-          <main className="flex-1 overflow-y-auto no-scrollbar scroll-smooth">
-            {children}
+          <main className="flex-1 overflow-y-auto no-scrollbar scroll-smooth smooth-scroll">
+            <Outlet />
           </main>
 
-          <RightSidebar isDarkMode={isDarkMode} />
+          <div className="overflow-y-auto no-scrollbar smooth-scroll">
+            <RightSidebar isDarkMode={isDarkMode} />
+          </div>
         </div>
       </div>
     </div>

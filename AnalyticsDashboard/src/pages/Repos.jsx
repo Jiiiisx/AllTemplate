@@ -11,13 +11,17 @@ import {
   Filter,
   ExternalLink,
   Code2,
-  Clock
+  Clock,
+  X,
+  Globe,
+  Lock
 } from 'lucide-react';
 import { reposData } from '../data/repos';
 
 const Repos = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterLang, setFilterLang] = useState('All');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const filteredRepos = reposData.filter(repo => {
     const matchesSearch = repo.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -52,10 +56,96 @@ const Repos = () => {
           <h1 className="text-4xl font-bold text-zinc-800 dark:text-white tracking-tighter transition-colors">Repositories</h1>
           <p className="text-zinc-400 text-sm mt-2 font-medium">Monitoring codebase health, activity, and community engagement across all projects.</p>
         </div>
-        <button className="bg-accent text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 shrink-0">
+        <button 
+          onClick={() => setIsModalOpen(true)}
+          className="bg-accent text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 shrink-0"
+        >
           <Plus size={16} /> New Repository
         </button>
       </header>
+
+      {/* MODAL FORM: NEW REPOSITORY */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsModalOpen(false)}
+              className="absolute inset-0 bg-zinc-950/60 backdrop-blur-md"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-xl bg-white dark:bg-zinc-900 rounded-[2.5rem] p-10 shadow-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden"
+            >
+              {/* Decoration */}
+              <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+                <Github size={120} />
+              </div>
+
+              <div className="flex justify-between items-center mb-10">
+                <div>
+                  <h2 className="text-2xl font-bold text-zinc-800 dark:text-white tracking-tight">Create Repository</h2>
+                  <p className="text-zinc-400 text-xs font-medium mt-1 uppercase tracking-widest">Setup your new codebase environment</p>
+                </div>
+                <button onClick={() => setIsModalOpen(false)} className="text-zinc-400 hover:text-red-500 transition-colors">
+                  <X size={24} />
+                </button>
+              </div>
+
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-2">Repository Name</label>
+                  <input type="text" placeholder="e.g. devhub-core-api" className="w-full bg-zinc-50 dark:bg-zinc-800 border-none rounded-2xl py-4 px-6 text-sm outline-none focus:ring-4 focus:ring-accent/5 transition-all dark:text-white font-bold" />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-2">Description</label>
+                  <textarea rows="3" placeholder="Briefly describe your project..." className="w-full bg-zinc-50 dark:bg-zinc-800 border-none rounded-2xl py-4 px-6 text-sm outline-none focus:ring-4 focus:ring-accent/5 transition-all dark:text-white font-medium resize-none"></textarea>
+                </div>
+
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-2">Main Language</label>
+                    <select className="w-full bg-zinc-50 dark:bg-zinc-800 border-none rounded-2xl py-4 px-6 text-sm outline-none focus:ring-4 focus:ring-accent/5 transition-all dark:text-white font-bold appearance-none">
+                      <option>TypeScript</option>
+                      <option>JavaScript</option>
+                      <option>Python</option>
+                      <option>Go</option>
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-2">Visibility</label>
+                    <div className="flex gap-2 bg-zinc-50 dark:bg-zinc-800 p-1.5 rounded-2xl">
+                      <button className="flex-1 flex items-center justify-center gap-2 py-2 bg-white dark:bg-zinc-700 shadow-sm rounded-xl text-[10px] font-black uppercase text-accent">
+                        <Globe size={12} /> Public
+                      </button>
+                      <button className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-[10px] font-black uppercase text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-all">
+                        <Lock size={12} /> Private
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-12 flex gap-4">
+                <button 
+                  onClick={() => setIsModalOpen(false)}
+                  className="flex-1 py-4 border border-zinc-100 dark:border-zinc-800 text-zinc-400 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all"
+                >
+                  Cancel
+                </button>
+                <button className="flex-[2] py-4 bg-accent text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all">
+                  Initialize Project
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* TOOLBAR */}
       <div className="mb-10 flex flex-col lg:flex-row gap-4 items-center justify-between">

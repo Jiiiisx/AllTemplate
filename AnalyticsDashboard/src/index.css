@@ -2,22 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Tambahan agar font lebih bagus dan latar belakang sesuai desain */
 @layer base {
+  html, body {
+    @apply h-full overflow-hidden;
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-soft-bg font-sans antialiased;
+    @apply bg-white dark:bg-zinc-950 font-sans antialiased transition-colors duration-300;
   }
 }
 
 @layer utilities {
-  /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Tambahkan kelas ini ke elemen yang butuh scroll halus */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
   }
 }

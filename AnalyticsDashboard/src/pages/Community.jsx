@@ -6,6 +6,7 @@ import { contributorsData } from '../data/community';
 
 const Community = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const filteredContributors = contributorsData.filter(c => 
     c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -24,10 +25,81 @@ const Community = () => {
           <h1 className="text-4xl font-bold text-zinc-800 dark:text-white tracking-tighter transition-colors">Contributor Leaderboard</h1>
           <p className="text-zinc-400 text-sm mt-2 font-medium">Top contributors based on commits, merged PRs, and community points.</p>
         </div>
-        <button className="bg-accent text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+        <button 
+          onClick={() => setIsModalOpen(true)}
+          className="bg-accent text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
+        >
           <UserPlus size={14} /> Invite Contributor
         </button>
       </header>
+
+      {/* MODAL FORM: INVITE CONTRIBUTOR */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsModalOpen(false)}
+              className="absolute inset-0 bg-zinc-950/60 backdrop-blur-md"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-xl bg-white dark:bg-zinc-900 rounded-[2.5rem] p-10 shadow-2xl border border-zinc-100 dark:border-zinc-800"
+            >
+              <div className="flex justify-between items-center mb-10">
+                <div>
+                  <h2 className="text-2xl font-bold text-zinc-800 dark:text-white tracking-tight">Invite to Community</h2>
+                  <p className="text-zinc-400 text-xs font-medium mt-1 uppercase tracking-widest">Onboard new developer to the project</p>
+                </div>
+                <button onClick={() => setIsModalOpen(false)} className="text-zinc-400 hover:text-red-500 transition-colors">
+                  <X size={24} />
+                </button>
+              </div>
+
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-2">Full Name</label>
+                  <input type="text" placeholder="e.g. Jonathan Doe" className="w-full bg-zinc-50 dark:bg-zinc-800 border-none rounded-2xl py-4 px-6 text-sm outline-none focus:ring-4 focus:ring-accent/5 transition-all dark:text-white font-bold" />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-2">Email Address</label>
+                  <div className="relative group">
+                    <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-zinc-300 group-focus-within:text-accent transition-colors" size={18} />
+                    <input type="email" placeholder="developer@example.com" className="w-full bg-zinc-50 dark:bg-zinc-800 border-none rounded-2xl py-4 pl-14 pr-6 text-sm outline-none focus:ring-4 focus:ring-accent/5 transition-all dark:text-white font-bold" />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-2">Assign Role</label>
+                  <select className="w-full bg-zinc-50 dark:bg-zinc-800 border-none rounded-2xl py-4 px-6 text-sm outline-none focus:ring-4 focus:ring-accent/5 transition-all dark:text-white font-bold appearance-none">
+                    <option>Plugin Contributor</option>
+                    <option>Core Maintainer</option>
+                    <option>Documentation Lead</option>
+                    <option>Security Expert</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="mt-12 flex gap-4">
+                <button 
+                  onClick={() => setIsModalOpen(false)}
+                  className="flex-1 py-4 border border-zinc-100 dark:border-zinc-800 text-zinc-400 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all"
+                >
+                  Cancel
+                </button>
+                <button className="flex-[2] py-4 bg-accent text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2">
+                  <UserPlus size={14} /> Send Invitation
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* TOP 3 HIGHLIGHTS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">

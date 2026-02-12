@@ -15,6 +15,11 @@ export const statsHistory = {
     { title: "Active Contributors", value: "2.4K", trend: "+150", icon: Users },
     { title: "Tasks Resolved", value: "1.2K", trend: "+300", icon: CheckSquare },
     { title: "Merged PRs", value: "850", trend: "+120", icon: GitPullRequest },
+  ],
+  "private": [
+    { title: "Server Load", value: "24%", trend: "-2%", icon: Code2 },
+    { title: "API Uptime", value: "99.99%", trend: "Stable", icon: GitPullRequest },
+    { title: "Active Nodes", value: "12", trend: "Normal", icon: Users },
   ]
 };
 

@@ -11,12 +11,17 @@ import {
   CircleDashed,
   LayoutGrid,
   List,
-  Plus
+  Plus,
+  X,
+  Type,
+  Tag,
+  AlignLeft
 } from 'lucide-react';
 import { docsData } from '../data/docs';
 
 const Docs = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const filteredDocs = docsData.filter(doc => 
     doc.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -43,10 +48,87 @@ const Docs = () => {
           <h1 className="text-4xl font-bold text-zinc-800 dark:text-white tracking-tighter transition-colors">Documentation Hub</h1>
           <p className="text-zinc-400 text-sm mt-2 font-medium">Collaborative technical documentation and project knowledge base.</p>
         </div>
-        <button className="bg-accent text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 shrink-0">
+        <button 
+          onClick={() => setIsModalOpen(true)}
+          className="bg-accent text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 shrink-0"
+        >
           <Plus size={16} /> Create Page
         </button>
       </header>
+
+      {/* MODAL FORM: CREATE DOC PAGE */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsModalOpen(false)}
+              className="absolute inset-0 bg-zinc-950/60 backdrop-blur-md"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-xl bg-white dark:bg-zinc-900 rounded-[2.5rem] p-10 shadow-2xl border border-zinc-100 dark:border-zinc-800"
+            >
+              <div className="flex justify-between items-center mb-10">
+                <div>
+                  <h2 className="text-2xl font-bold text-zinc-800 dark:text-white tracking-tight">New Doc Page</h2>
+                  <p className="text-zinc-400 text-xs font-medium mt-1 uppercase tracking-widest">Share knowledge with the community</p>
+                </div>
+                <button onClick={() => setIsModalOpen(false)} className="text-zinc-400 hover:text-red-500 transition-colors">
+                  <X size={24} />
+                </button>
+              </div>
+
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-2">Page Title</label>
+                  <div className="relative group">
+                    <Type className="absolute left-5 top-1/2 -translate-y-1/2 text-zinc-300 group-focus-within:text-accent transition-colors" size={18} />
+                    <input type="text" placeholder="e.g. Authentication Flow" className="w-full bg-zinc-50 dark:bg-zinc-800 border-none rounded-2xl py-4 pl-14 pr-6 text-sm outline-none focus:ring-4 focus:ring-accent/5 transition-all dark:text-white font-bold" />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-2">Category</label>
+                  <div className="relative group">
+                    <Tag className="absolute left-5 top-1/2 -translate-y-1/2 text-zinc-300 group-focus-within:text-accent transition-colors" size={18} />
+                    <select className="w-full bg-zinc-50 dark:bg-zinc-800 border-none rounded-2xl py-4 pl-14 pr-6 text-sm outline-none focus:ring-4 focus:ring-accent/5 transition-all dark:text-white font-bold appearance-none">
+                      <option>Guides</option>
+                      <option>API Reference</option>
+                      <option>Architecture</option>
+                      <option>Development</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-2">Description</label>
+                  <div className="relative group">
+                    <AlignLeft className="absolute left-5 top-6 text-zinc-300 group-focus-within:text-accent transition-colors" size={18} />
+                    <textarea rows="4" placeholder="What is this page about?" className="w-full bg-zinc-50 dark:bg-zinc-800 border-none rounded-[2rem] py-5 pl-14 pr-6 text-sm outline-none focus:ring-4 focus:ring-accent/5 transition-all dark:text-white font-medium resize-none"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-12 flex gap-4">
+                <button 
+                  onClick={() => setIsModalOpen(false)}
+                  className="flex-1 py-4 border border-zinc-100 dark:border-zinc-800 text-zinc-400 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all"
+                >
+                  Cancel
+                </button>
+                <button className="flex-[2] py-4 bg-accent text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2">
+                  <Plus size={14} /> Publish Page
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* TOOLBAR */}
       <div className="mb-10 flex flex-col lg:flex-row gap-4 items-center justify-between">

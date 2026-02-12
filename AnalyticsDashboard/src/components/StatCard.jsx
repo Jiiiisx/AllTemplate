@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { AreaChart, Area, ResponsiveContainer } from 'recharts';
 
 const miniData = [
@@ -7,7 +8,13 @@ const miniData = [
 
 export default function StatCard({ title, value, trend, icon: Icon }) {
   return (
-    <div className="group relative">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="group relative"
+    >
       <div className="absolute -inset-0.5 bg-gradient-to-r from-accent to-purple-500 rounded-[2rem] blur opacity-0 group-hover:opacity-15 transition duration-500"></div>
       
       <div className="relative p-7 rounded-[2rem] border transition-all duration-500 group-hover:-translate-y-1 shadow-sm bg-white border-zinc-100/80 dark:bg-zinc-900 dark:border-zinc-800">
@@ -34,6 +41,6 @@ export default function StatCard({ title, value, trend, icon: Icon }) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
