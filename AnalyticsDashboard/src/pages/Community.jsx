@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Trophy, Medal, Github, MoreHorizontal, UserPlus, GitCommit, GitPullRequest } from 'lucide-react';
+import { Search, Trophy, Medal, Github, MoreHorizontal, UserPlus, GitCommit, GitPullRequest, CheckSquare } from 'lucide-react';
 import { contributorsData } from '../data/community';
 
 const Community = () => {
@@ -54,8 +54,8 @@ const Community = () => {
                 <p className={`text-[8px] font-black uppercase mt-1 ${i === 0 ? 'text-white/50' : 'text-zinc-400'}`}>PRs</p>
               </div>
               <div className="text-center ml-auto">
-                <p className="text-lg font-bold leading-none">{c.points}</p>
-                <p className={`text-[8px] font-black uppercase mt-1 ${i === 0 ? 'text-white/50' : 'text-zinc-400'}`}>Points</p>
+                <p className="text-lg font-bold leading-none">{c.tasksFixed}</p>
+                <p className={`text-[8px] font-black uppercase mt-1 ${i === 0 ? 'text-white/50' : 'text-zinc-400'}`}>Tasks</p>
               </div>
             </div>
           </div>
@@ -121,6 +121,10 @@ const Community = () => {
                         <div className="flex items-center gap-1.5">
                           <GitPullRequest size={14} className="text-zinc-300" />
                           <span className="text-xs font-bold text-zinc-500">{c.prs}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <CheckSquare size={14} className="text-zinc-300" />
+                          <span className="text-xs font-bold text-zinc-500">{c.tasksFixed}</span>
                         </div>
                       </div>
                     </td>

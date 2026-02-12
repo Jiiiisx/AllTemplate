@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Target, Award } from 'lucide-react';
 
 const CodeHeatmap = ({ isDarkMode }) => {
-  // Menampilkan 48 minggu agar lebih penuh secara horizontal
   const weeks = Array.from({ length: 48 }, (_, i) => i);
   const days = Array.from({ length: 7 }, (_, i) => i);
 
-  const getIntensity = () => {
-    const r = Math.random();
-    if (r > 0.85) return 'bg-accent';
-    if (r > 0.6) return 'bg-accent/60';
-    if (r > 0.3) return 'bg-accent/20';
-    return isDarkMode ? 'bg-zinc-800' : 'bg-zinc-100';
-  };
+  // Stabilize colors so they don't re-randomize on every render
+  const gridData = useMemo(() => {
+    return weeks.map(() => days.map(() => {
+      const r = Math.random();
+      if (r > 0.85) return 'bg-accent';
+      if (r > 0.6) return 'bg-accent/60';
+      if (r > 0.3) return 'bg-accent/20';
+      return null; // Fallback to themed background
+    }));
+  }, []);
 
   return (
     <div className="bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 p-8 rounded-[2.5rem] shadow-sm transition-all duration-500">
@@ -38,21 +40,25 @@ const CodeHeatmap = ({ isDarkMode }) => {
             </div>
           </div>
 
-          <div className="flex gap-1 overflow-x-auto no-scrollbar pb-2 mask-fade-right">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex gap-1 overflow-x-auto no-scrollbar pb-2 mask-fade-right"
+          >
             {weeks.map((w) => (
               <div key={w} className="flex flex-col gap-1 shrink-0">
                 {days.map((d) => (
-                  <motion.div
+                  <div
                     key={`${w}-${d}`}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: (w * 0.01) + (d * 0.005) }}
-                    className={`w-3 h-3 rounded-[2px] transition-all hover:ring-2 hover:ring-accent/50 cursor-pointer ${getIntensity()}`}
+                    className={`w-3 h-3 rounded-[2px] transition-all hover:ring-2 hover:ring-accent/50 cursor-pointer ${
+                      gridData[w][d] || (isDarkMode ? 'bg-zinc-800' : 'bg-zinc-100')
+                    }`}
                   />
                 ))}
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* RIGHT: MINI STATS SUMMARY TABLE */}

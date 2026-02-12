@@ -6,12 +6,16 @@ const RevenueChart = ({ data }) => {
     <ResponsiveContainer width="100%" height="100%">
       <AreaChart data={data}>
         <defs>
-          <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="colorCommits" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor="#6366F1" stopOpacity={0.3}/>
             <stop offset="95%" stopColor="#6366F1" stopOpacity={0}/>
           </linearGradient>
+          <linearGradient id="colorTasks" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
+            <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+          </linearGradient>
         </defs>
-        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" opacity={0.5} />
+        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" opacity={0.2} />
         <XAxis 
           dataKey="name" 
           axisLine={false} 
@@ -26,21 +30,34 @@ const RevenueChart = ({ data }) => {
         />
         <Tooltip 
           contentStyle={{ 
-            borderRadius: '16px', 
+            borderRadius: '20px', 
             border: 'none', 
-            boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)',
+            boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.15)',
             fontSize: '12px',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            padding: '12px'
           }} 
+          itemStyle={{ padding: '2px 0' }}
         />
         <Area 
           type="monotone" 
-          dataKey="revenue" 
+          dataKey="commits" 
           stroke="#6366F1" 
           strokeWidth={4}
           fillOpacity={1} 
-          fill="url(#colorRevenue)" 
+          fill="url(#colorCommits)" 
           animationDuration={1500}
+          name="Commits"
+        />
+        <Area 
+          type="monotone" 
+          dataKey="tasks" 
+          stroke="#10b981" 
+          strokeWidth={4}
+          fillOpacity={1} 
+          fill="url(#colorTasks)" 
+          animationDuration={1500}
+          name="Tasks Completed"
         />
       </AreaChart>
     </ResponsiveContainer>

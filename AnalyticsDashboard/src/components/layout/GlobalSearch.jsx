@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
-import { Search, User, FileText, ChevronRight } from "lucide-react";
+import { Search, User, FileText, ChevronRight, GitCommit } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { customersData } from "../../data/customers";
+import { contributorsData } from "../../data/community";
 import { siteConfig } from "../../data/config";
 
 const GlobalSearch = ({ isDarkMode }) => {
@@ -27,15 +27,15 @@ const GlobalSearch = ({ isDarkMode }) => {
     setQuery(val);
     
     if (val.length > 1) {
-      const filteredCustomers = customersData
+      const filteredContributors = contributorsData
         .filter(c => c.name.toLowerCase().includes(val.toLowerCase()))
-        .map(c => ({ ...c, type: 'customer', icon: User }));
+        .map(c => ({ ...c, type: 'contributor', icon: User }));
       
       const filteredPages = siteConfig.navigation
         .filter(p => p.name.toLowerCase().includes(val.toLowerCase()))
         .map(p => ({ ...p, type: 'page', icon: FileText }));
 
-      setResults([...filteredPages, ...filteredCustomers].slice(0, 6));
+      setResults([...filteredPages, ...filteredContributors].slice(0, 6));
       setIsOpen(true);
     } else {
       setResults([]);
@@ -49,7 +49,7 @@ const GlobalSearch = ({ isDarkMode }) => {
     if (item.type === 'page') {
       navigate(item.path);
     } else {
-      navigate('/customers'); // In a real app, go to detail
+      navigate('/community');
     }
   };
 

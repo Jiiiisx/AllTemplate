@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { siteConfig } from '../data/config';
 import { statsHistory, chartDataHistory } from '../data/statsData';
+import { contributorsData } from '../data/community';
 import StatCard from '../components/StatCard';
 import RevenueChart from '../components/RevenueChart';
 import CodeHeatmap from '../components/CodeHeatmap';
-import { Star, TrendingUp, Github, ExternalLink, ShieldAlert, Lock } from 'lucide-react';
+import { Star, TrendingUp, Github, ExternalLink, ShieldAlert, Lock, Trophy } from 'lucide-react';
 
 const Dashboard = ({ viewMode, isDarkMode }) => {
   const [timeframe, setTimeframe] = useState('7D');
+  const topContributor = contributorsData[0];
 
   return (
     <motion.div 
@@ -22,19 +24,19 @@ const Dashboard = ({ viewMode, isDarkMode }) => {
           <div className="flex items-center gap-2 mb-2">
             <span className={`text-[8px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full flex items-center gap-2 ${viewMode === 'private' ? 'bg-red-500/10 text-red-500' : 'bg-accent/10 text-accent'}`}>
               <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${viewMode === 'private' ? 'bg-red-500' : 'bg-accent'}`}></div>
-              {viewMode === 'private' ? 'Internal Management' : 'Community Pulse'}
+              {viewMode === 'private' ? 'Internal Management' : 'Project Pulse'}
             </span>
             <span className="text-zinc-300 text-[10px]">•</span>
             <span className="text-zinc-400 text-[10px] font-bold uppercase tracking-widest">v3.2-stable</span>
           </div>
           <h1 className="text-4xl font-bold text-zinc-800 dark:text-white tracking-tighter transition-colors flex items-center gap-4">
-            {viewMode === 'private' ? 'Maintainer Dashboard' : 'Project Overview'}
+            {viewMode === 'private' ? 'Maintainer Dashboard' : 'Development Overview'}
             <a href="#" className="text-zinc-300 hover:text-accent transition-colors"><Github size={24} /></a>
           </h1>
           <p className="text-zinc-400 text-sm mt-2 font-medium">
             {viewMode === 'private' 
               ? 'Accessing private metrics, security logs, and internal system configurations.' 
-              : 'Monitoring documentation coverage and community tasks velocity.'}
+              : 'Monitoring codebase health, commit velocity, and task completion.'}
           </p>
         </div>
 
@@ -55,28 +57,51 @@ const Dashboard = ({ viewMode, isDarkMode }) => {
         </div>
       </header>
 
-      {/* HEATMAP HANYA MUNCUL DI GLOBAL VIEW */}
-      {viewMode === 'public' && (
-        <div className="mb-12">
-          <CodeHeatmap isDarkMode={isDarkMode} />
+      {/* DASHBOARD TOP WIDGETS */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <div className="lg:col-span-2">
+          {viewMode === 'public' && <CodeHeatmap isDarkMode={isDarkMode} />}
         </div>
-      )}
+        
+        {/* LEADER OF THE WEEK WIDGET */}
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 p-8 rounded-[2.5rem] flex flex-col justify-center relative overflow-hidden group transition-all hover:shadow-2xl hover:shadow-accent/5">
+          <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-500">
+            <Trophy size={80} className="text-accent" />
+          </div>
+          <div className="relative z-10">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-4">Leader of the Week</p>
+            <div className="flex items-center gap-4 mb-6">
+              <img src={topContributor.avatar} alt="" className="w-14 h-14 rounded-2xl border-2 border-accent/20" />
+              <div>
+                <h3 className="text-xl font-bold text-zinc-800 dark:text-white tracking-tight">{topContributor.name}</h3>
+                <p className="text-xs text-zinc-400 font-medium">{topContributor.role}</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div>
+                <p className="text-sm font-bold text-zinc-800 dark:text-white">{topContributor.commits}</p>
+                <p className="text-[8px] font-black uppercase tracking-widest text-zinc-400">Commits</p>
+              </div>
+              <div>
+                <p className="text-sm font-bold text-zinc-800 dark:text-white">{topContributor.tasksFixed}</p>
+                <p className="text-[8px] font-black uppercase tracking-widest text-zinc-400">Tasks</p>
+              </div>
+              <div>
+                <p className="text-sm font-bold text-zinc-800 dark:text-white">{topContributor.points}</p>
+                <p className="text-[8px] font-black uppercase tracking-widest text-zinc-400">Points</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Baris kartu Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        <AnimatePresence>
-          {statsHistory[timeframe].map((stat, i) => (
-            <motion.div
-              key={`${viewMode}-${timeframe}-${stat.title}`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, delay: i * 0.05 }}
-            >
-              <StatCard {...stat} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
+        {statsHistory[timeframe].map((stat, i) => (
+          <div key={`${viewMode}-${timeframe}-${stat.title}`}>
+            <StatCard {...stat} />
+          </div>
+        ))}
       </div>
 
       {/* PRIVATE WIDGET (Security Audit) */}
@@ -127,19 +152,27 @@ const Dashboard = ({ viewMode, isDarkMode }) => {
         <div className="flex justify-between items-center mb-10">
           <div>
             <h3 className="text-xl font-bold text-zinc-800 dark:text-white transition-colors">
-              {viewMode === 'private' ? 'Internal Traffic Metrics' : 'Documentation Velocity'}
+              {viewMode === 'private' ? 'Internal Traffic Metrics' : 'Development Velocity'}
             </h3>
             <p className="text-zinc-400 text-[10px] uppercase font-black tracking-[0.2em] mt-2">
-              {viewMode === 'private' ? 'System response time & latency' : 'Coverage growth vs merged commits'}
+              {viewMode === 'private' ? 'System response time & latency' : 'Commits merged vs tasks resolved'}
             </p>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-accent rounded-full"></div>
               <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
-                {viewMode === 'private' ? 'Latency (ms)' : 'Coverage %'}
+                {viewMode === 'private' ? 'Latency (ms)' : 'Commits'}
               </span>
             </div>
+            {viewMode !== 'private' && (
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
+                  Tasks
+                </span>
+              </div>
+            )}
           </div>
         </div>
         <div className="h-[350px] w-full">
