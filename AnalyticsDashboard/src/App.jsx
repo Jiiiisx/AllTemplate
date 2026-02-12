@@ -9,7 +9,6 @@ import Repos from "./pages/Repos";
 import Docs from "./pages/Docs";
 import Settings from "./pages/Settings";
 import Workspaces from "./pages/Workspaces";
-import Customers from "./pages/Customers";
 import NotFound from "./pages/NotFound";
 import Notifications from "./pages/Notifications";
 import LoadingScreen from "./components/ui/LoadingScreen";
@@ -33,6 +32,16 @@ function App() {
   }, []);
 
   useLayoutEffect(() => {
+    // Load saved accent color
+    const savedAccent = localStorage.getItem('accentColor');
+    const savedHex = localStorage.getItem('accentHex');
+    if (savedAccent) {
+      document.documentElement.style.setProperty('--accent-color', savedAccent);
+    }
+    if (savedHex) {
+      document.documentElement.style.setProperty('--accent-hex', savedHex);
+    }
+
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
     } else {
@@ -77,9 +86,9 @@ function App() {
           <Route path="/community" element={<Community />} />
           <Route path="/repos" element={<Repos />} />
                               <Route path="/docs" element={<Docs />} />
-                              <Route path="/settings" element={<Settings />} />
-                              <Route path="/notifications" element={<Notifications />} />
-                              <Route path="/customers" element={<Customers />} />        </Route>
+                                                  <Route path="/settings" element={<Settings />} />
+                                                  <Route path="/notifications" element={<Notifications />} />
+                                                </Route>
 
         {/* 404 PAGE - ALSO FULL SCREEN */}
         <Route path="*" element={<NotFound />} />

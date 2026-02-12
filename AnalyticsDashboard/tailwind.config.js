@@ -10,7 +10,7 @@ export default {
       colors: {
         'soft-bg': '#F8F9FB',
         'soft-card': '#FFFFFF',
-        'accent': '#6366F1',
+        'accent': 'rgb(var(--accent-color) / <alpha-value>)',
       },
       borderRadius: {
         '3xl': '1.5rem',

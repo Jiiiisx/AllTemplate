@@ -29,6 +29,21 @@ const Settings = () => {
     { id: 'Integrations', icon: Github, label: 'App Integrations' },
   ];
 
+  const themeColors = [
+    { name: 'Indigo', rgb: '99 102 241', hex: '#6366F1', class: 'bg-[#6366F1]' },
+    { name: 'Emerald', rgb: '16 185 129', hex: '#10B981', class: 'bg-[#10B981]' },
+    { name: 'Rose', rgb: '244 63 94', hex: '#F43F5E', class: 'bg-[#F43F5E]' },
+    { name: 'Amber', rgb: '245 158 11', hex: '#F59E0B', class: 'bg-[#F59E0B]' },
+    { name: 'Sky', rgb: '14 165 233', hex: '#0EA5E9', class: 'bg-[#0EA5E9]' },
+  ];
+
+  const changeAccentColor = (rgb, hex) => {
+    document.documentElement.style.setProperty('--accent-color', rgb);
+    document.documentElement.style.setProperty('--accent-hex', hex);
+    localStorage.setItem('accentColor', rgb);
+    localStorage.setItem('accentHex', hex);
+  };
+
   return (
     <div className="flex flex-col lg:flex-row h-full min-h-[calc(100vh-80px)]">
       
@@ -61,8 +76,23 @@ const Settings = () => {
           ))}
         </nav>
 
-        {/* LOGOUT / DANGER ZONE QUICK LINK */}
+        {/* THEME COLOR SELECTOR */}
         <div className="mt-12 pt-8 border-t border-zinc-100 dark:border-zinc-800">
+          <p className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-6">Accent Color</p>
+          <div className="flex gap-3 px-2">
+            {themeColors.map((color) => (
+              <button
+                key={color.name}
+                onClick={() => changeAccentColor(color.rgb, color.hex)}
+                className={`w-8 h-8 rounded-full ${color.class} shadow-lg hover:scale-110 active:scale-90 transition-all border-4 border-white dark:border-zinc-900 hover:border-accent/20`}
+                title={color.name}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* LOGOUT / DANGER ZONE QUICK LINK */}
+        <div className="mt-8 pt-8 border-t border-zinc-100 dark:border-zinc-800">
           <p className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.2em] mb-4">Account Status</p>
           <div className="flex items-center gap-3 px-2">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>

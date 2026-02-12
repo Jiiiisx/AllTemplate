@@ -7,8 +7,8 @@ const RevenueChart = ({ data }) => {
       <AreaChart data={data}>
         <defs>
           <linearGradient id="colorCommits" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#6366F1" stopOpacity={0.3}/>
-            <stop offset="95%" stopColor="#6366F1" stopOpacity={0}/>
+            <stop offset="5%" stopColor="var(--accent-hex)" stopOpacity={0.3}/>
+            <stop offset="95%" stopColor="var(--accent-hex)" stopOpacity={0}/>
           </linearGradient>
           <linearGradient id="colorTasks" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
@@ -42,7 +42,7 @@ const RevenueChart = ({ data }) => {
         <Area 
           type="monotone" 
           dataKey="commits" 
-          stroke="#6366F1" 
+          stroke="var(--accent-hex)" 
           strokeWidth={4}
           fillOpacity={1} 
           fill="url(#colorCommits)" 

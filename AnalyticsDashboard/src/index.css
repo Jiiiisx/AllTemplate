@@ -1,3 +1,8 @@
+:root {
+  --accent-color: 99 102 241;
+  --accent-hex: #6366F1;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -22,7 +27,6 @@
     scrollbar-width: none;
   }
   
-  /* Tambahkan kelas ini ke elemen yang butuh scroll halus */
   .smooth-scroll {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;

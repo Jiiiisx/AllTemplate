@@ -67,38 +67,38 @@ const PrivateWidgets = () => {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
       
       {/* 1. RESOURCE MONITOR (2/2 layout) */}
-      <div className="bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 p-10 rounded-[2.5rem] flex flex-col shadow-sm">
-        <div className="mb-10">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 p-6 lg:p-10 rounded-[2.5rem] flex flex-col shadow-sm">
+        <div className="mb-8 lg:mb-10">
           <h4 className="text-sm font-bold text-zinc-800 dark:text-white tracking-tight flex items-center gap-2">
             <Database size={18} className="text-accent" /> Resource Monitoring
           </h4>
           <p className="text-[10px] text-zinc-400 font-black uppercase tracking-widest mt-1">Real-time hardware allocation</p>
         </div>
-        <div className="flex justify-around items-center flex-1">
-          <ResourceGauge label="CPU Usage" value={42} color="#6366F1" />
+        <div className="flex flex-wrap justify-around items-center gap-8 flex-1">
+          <ResourceGauge label="CPU" value={42} color="#6366F1" />
           <ResourceGauge label="Memory" value={68} color="#10b981" />
-          <ResourceGauge label="Disk I/O" value={15} color="#ec4899" />
+          <ResourceGauge label="Disk" value={15} color="#ec4899" />
         </div>
       </div>
 
       {/* 2. QUICK ACTIONS (2/2 layout) */}
-      <div className="bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 p-10 rounded-[2.5rem] flex flex-col shadow-sm">
-        <div className="mb-10">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 p-6 lg:p-10 rounded-[2.5rem] flex flex-col shadow-sm">
+        <div className="mb-8 lg:mb-10">
           <h4 className="text-sm font-bold text-zinc-800 dark:text-white tracking-tight flex items-center gap-2">
             <Zap size={18} className="text-accent" /> Command Shortcuts
           </h4>
           <p className="text-[10px] text-zinc-400 font-black uppercase tracking-widest mt-1">Execute system-wide tasks</p>
         </div>
-        <div className="grid grid-cols-2 gap-6 flex-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 flex-1">
           {quickActions.map((action) => (
             <button 
               key={action.label}
-              className="flex items-center gap-4 p-5 rounded-2xl border border-zinc-50 dark:border-zinc-800/50 hover:border-accent/20 hover:bg-accent/5 transition-all group text-left"
+              className="flex items-center gap-4 p-4 lg:p-5 rounded-2xl border border-zinc-50 dark:border-zinc-800/50 hover:border-accent/20 hover:bg-accent/5 transition-all group text-left"
             >
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all group-hover:scale-110 shrink-0 ${action.color}`}>
-                <action.icon size={20} />
+              <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center transition-all group-hover:scale-110 shrink-0 ${action.color}`}>
+                <action.icon size={18} />
               </div>
-              <span className="text-[11px] font-bold text-zinc-600 dark:text-zinc-400 group-hover:text-accent uppercase tracking-widest leading-tight">
+              <span className="text-[10px] lg:text-[11px] font-bold text-zinc-600 dark:text-zinc-400 group-hover:text-accent uppercase tracking-widest leading-tight">
                 {action.label}
               </span>
             </button>

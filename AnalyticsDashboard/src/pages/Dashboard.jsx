@@ -21,7 +21,7 @@ const Dashboard = ({ viewMode, isDarkMode }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="p-12"
+      className="p-6 md:p-12"
     >
       <header className="mb-12 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6">
         <div>

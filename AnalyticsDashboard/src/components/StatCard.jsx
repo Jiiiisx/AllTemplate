@@ -25,7 +25,7 @@ export default function StatCard({ title, value, trend, icon: Icon }) {
           <div className="h-10 w-20">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={miniData}>
-                <Area type="monotone" dataKey="v" stroke="#6366F1" fill="#6366F1" fillOpacity={0.1} strokeWidth={2} />
+                <Area type="monotone" dataKey="v" stroke="var(--accent-hex)" fill="var(--accent-hex)" fillOpacity={0.1} strokeWidth={2} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
