@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
+import { useApp } from "./context/AppContext";
 import MainLayout from "./components/layout/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import Community from "./pages/Community";
@@ -14,14 +15,8 @@ import Notifications from "./pages/Notifications";
 import LoadingScreen from "./components/ui/LoadingScreen";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const saved = localStorage.getItem("darkMode");
-    return saved ? JSON.parse(saved) : false;
-  });
-
   const [isLoading, setIsLoading] = useState(true);
-  const [isCollapsed, setIsCollapsed] = useState(false); // Persistent Sidebar State
-  const [viewMode, setViewMode] = useState('public');
+  const { viewMode } = useApp();
   const location = useLocation();
 
   useEffect(() => {
@@ -30,29 +25,6 @@ function App() {
     }, 600);
     return () => clearTimeout(timer);
   }, []);
-
-  useLayoutEffect(() => {
-    // Load saved accent color
-    const savedAccent = localStorage.getItem('accentColor');
-    const savedHex = localStorage.getItem('accentHex');
-    if (savedAccent) {
-      document.documentElement.style.setProperty('--accent-color', savedAccent);
-    }
-    if (savedHex) {
-      document.documentElement.style.setProperty('--accent-hex', savedHex);
-    }
-
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
-  }, [isDarkMode]);
-
-  const toggleDarkMode = (value) => {
-    setIsDarkMode(value);
-  };
 
   if (isLoading) {
     return (
@@ -69,26 +41,15 @@ function App() {
         <Route path="/workspaces" element={<Workspaces />} />
         
         {/* DASHBOARD PAGES WITH SIDEBAR */}
-        <Route 
-          element={
-            <MainLayout 
-              isDarkMode={isDarkMode} 
-              setIsDarkMode={toggleDarkMode}
-              viewMode={viewMode}
-              setViewMode={setViewMode}
-              isCollapsed={isCollapsed}
-              setIsCollapsed={setIsCollapsed}
-            />
-          }
-        >
-          <Route path="/" element={<Dashboard viewMode={viewMode} isDarkMode={isDarkMode} />} />
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Dashboard />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/community" element={<Community />} />
           <Route path="/repos" element={<Repos />} />
-                              <Route path="/docs" element={<Docs />} />
-                                                  <Route path="/settings" element={<Settings />} />
-                                                  <Route path="/notifications" element={<Notifications />} />
-                                                </Route>
+          <Route path="/docs" element={<Docs />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/notifications" element={<Notifications />} />
+        </Route>
 
         {/* 404 PAGE - ALSO FULL SCREEN */}
         <Route path="*" element={<NotFound />} />

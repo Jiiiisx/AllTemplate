@@ -4,9 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { siteConfig } from "../../data/config";
 import { notificationsData } from "../../data/notifications";
+import { useApp } from "../../context/AppContext";
 import GlobalSearch from "./GlobalSearch";
 
-const Header = ({ isDarkMode, setIsDarkMode, setIsSidebarOpen, viewMode, setViewMode }) => {
+const Header = ({ setIsSidebarOpen }) => {
+  const { isDarkMode, toggleDarkMode, viewMode, setViewMode } = useApp();
   const [isNotifOpen, setIsNotifOpen] = useState(false);
   const notifRef = useRef(null);
   const navigate = useNavigate();
@@ -32,7 +34,7 @@ const Header = ({ isDarkMode, setIsDarkMode, setIsSidebarOpen, viewMode, setView
           <Menu size={20} />
         </button>
         
-        <GlobalSearch isDarkMode={isDarkMode} />
+        <GlobalSearch />
       </div>
 
       <div className="flex items-center gap-4">
@@ -53,7 +55,7 @@ const Header = ({ isDarkMode, setIsDarkMode, setIsSidebarOpen, viewMode, setView
         </div>
 
         <button 
-          onClick={() => setIsDarkMode(!isDarkMode)}
+          onClick={toggleDarkMode}
           className={`w-10 h-10 border flex items-center justify-center rounded-xl transition-all ${isDarkMode ? 'bg-zinc-900 border-zinc-800 text-yellow-400 hover:text-yellow-200' : 'bg-white border-zinc-100 text-zinc-400 hover:text-accent'}`}
         >
           {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}

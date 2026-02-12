@@ -17,8 +17,10 @@ import {
   Smartphone
 } from 'lucide-react';
 import { siteConfig } from '../data/config';
+import { useApp } from '../context/AppContext';
 
 const Settings = () => {
+  const { isDarkMode, updateAccentColor, showToast } = useApp();
   const [activeTab, setActiveTab] = useState('Profile');
   const [showPassword, setShowPassword] = useState(false);
 
@@ -37,11 +39,13 @@ const Settings = () => {
     { name: 'Sky', rgb: '14 165 233', hex: '#0EA5E9', class: 'bg-[#0EA5E9]' },
   ];
 
-  const changeAccentColor = (rgb, hex) => {
-    document.documentElement.style.setProperty('--accent-color', rgb);
-    document.documentElement.style.setProperty('--accent-hex', hex);
-    localStorage.setItem('accentColor', rgb);
-    localStorage.setItem('accentHex', hex);
+  const handleAccentChange = (rgb, hex, name) => {
+    updateAccentColor(rgb, hex);
+    showToast('Theme Updated', `Accent color changed to ${name}.`, 'info');
+  };
+
+  const handleSaveProfile = () => {
+    showToast('Profile Saved', 'Your changes have been successfully applied.', 'success');
   };
 
   return (
@@ -83,7 +87,7 @@ const Settings = () => {
             {themeColors.map((color) => (
               <button
                 key={color.name}
-                onClick={() => changeAccentColor(color.rgb, color.hex)}
+                onClick={() => handleAccentChange(color.rgb, color.hex, color.name)}
                 className={`w-8 h-8 rounded-full ${color.class} shadow-lg hover:scale-110 active:scale-90 transition-all border-4 border-white dark:border-zinc-900 hover:border-accent/20`}
                 title={color.name}
               />
@@ -148,7 +152,10 @@ const Settings = () => {
                 </section>
 
                 <div className="flex justify-end">
-                  <button className="bg-accent text-white px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-xl shadow-accent/20 hover:scale-105 transition-all flex items-center gap-2">
+                  <button 
+                    onClick={handleSaveProfile}
+                    className="bg-accent text-white px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-xl shadow-accent/20 hover:scale-105 transition-all flex items-center gap-2"
+                  >
                     <Save size={16} /> Save Profile
                   </button>
                 </div>

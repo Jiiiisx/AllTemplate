@@ -15,8 +15,10 @@ import {
   PanelLeft
 } from "lucide-react";
 import { siteConfig } from "../../data/config";
+import { useApp } from "../../context/AppContext";
 
-const Sidebar = ({ isDarkMode, isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
+const Sidebar = ({ isOpen, setIsOpen }) => {
+  const { isDarkMode, isCollapsed, setIsCollapsed } = useApp();
   const location = useLocation();
 
   return (

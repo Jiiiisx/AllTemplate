@@ -1,16 +1,93 @@
-# React + Vite
+# 🚀 DevHub – Premium Analytics & Developer Dashboard Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**DevHub** is a sophisticated, high-performance analytics dashboard designed specifically for developers and maintainers. Built with **React 18**, **Tailwind CSS**, and **Framer Motion**, it offers a seamless blend of aesthetics and functionality.
 
-Currently, two official plugins are available:
+Whether you're building a community portal, a repository monitor, or an internal team dashboard, DevHub provides the perfect foundation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🌓 **Dynamic Theme System**: Seamless Dark and Light mode support with persistent user preference.
+- 🎨 **One-Click Customization**: Change the entire look and feel using the built-in Accent Color picker in the Settings.
+- 📊 **Rich Data Visualization**: Beautifully animated charts and heatmaps powered by `Recharts`.
+- 🔄 **Dual View Modes**: Switch between "Project Pulse" (Public) and "Maintainer Dashboard" (Private) with a single click.
+- 📱 **Fully Responsive**: Optimized for every device, from mobile phones to large desktops.
+- ⚡ **Ultra-Fast Performance**: Built on Vite for near-instant HMR and lightning-fast builds.
+- 🧩 **Modular Architecture**: Clean, reusable components that make extending the dashboard a breeze.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Built With
+
+- **React 18** – Modern UI library.
+- **Vite** – Next-generation frontend tooling.
+- **Tailwind CSS** – Utility-first CSS framework.
+- **Framer Motion** – Industry-standard animation library.
+- **Lucide React** – Clean and consistent iconography.
+- **Recharts** – Composable charting library.
+
+---
+
+## 🚀 Quick Start
+
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Run Development Server**
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for Production**
+   ```bash
+   npm run build
+   ```
+
+---
+
+## ⚙️ Customization Guide
+
+### Centralized Configuration
+You can change the application name, roles, navigation items, and default stats in a single file:
+`src/data/config.js`
+
+### Changing the Theme
+The accent color is managed via CSS variables. You can easily modify the default color in `src/index.css` or let users choose their own through the Settings page.
+
+```css
+:root {
+  --accent-color: 99 102 241; /* RGB format */
+  --accent-hex: #6366F1;
+}
+```
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── components/     # Reusable UI components & layouts
+├── data/           # Mock data and site configuration
+├── pages/          # Full-page view components
+└── assets/         # Images, icons, and static files
+```
+
+---
+
+## 📚 Documentation
+
+For a more comprehensive guide on advanced customization, system architecture, and deployment strategies, please refer to the **[PREMIUM_GUIDE.md](./PREMIUM_GUIDE.md)** included in this package.
+
+---
+
+## 📄 License
+
+This template is available for purchase on [Gumroad](YOUR_GUMROAD_LINK). Once purchased, you are free to use it for personal and commercial projects.
+
+---
+
+*Crafted with ❤️ by Raji Dev*

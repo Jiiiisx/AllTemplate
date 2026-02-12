@@ -2,10 +2,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Search, User, FileText, ChevronRight, GitCommit } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useApp } from "../../context/AppContext";
 import { contributorsData } from "../../data/community";
 import { siteConfig } from "../../data/config";
 
-const GlobalSearch = ({ isDarkMode }) => {
+const GlobalSearch = () => {
+  const { isDarkMode } = useApp();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [isOpen, setIsOpen] = useState(false);

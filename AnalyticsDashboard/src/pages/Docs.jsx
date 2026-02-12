@@ -18,10 +18,17 @@ import {
   AlignLeft
 } from 'lucide-react';
 import { docsData } from '../data/docs';
+import { useApp } from '../context/AppContext';
 
 const Docs = () => {
+  const { showToast } = useApp();
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handlePublish = () => {
+    setIsModalOpen(false);
+    showToast('Document Published', 'New documentation page has been added successfully.', 'success');
+  };
 
   const filteredDocs = docsData.filter(doc => 
     doc.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -121,7 +128,10 @@ const Docs = () => {
                 >
                   Cancel
                 </button>
-                <button className="flex-[2] py-4 bg-accent text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2">
+                <button 
+                  onClick={handlePublish}
+                  className="flex-[2] py-4 bg-accent text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2"
+                >
                   <Plus size={14} /> Publish Page
                 </button>
               </div>

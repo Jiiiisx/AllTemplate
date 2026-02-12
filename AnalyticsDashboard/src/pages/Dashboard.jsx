@@ -7,11 +7,30 @@ import StatCard from '../components/StatCard';
 import RevenueChart from '../components/RevenueChart';
 import CodeHeatmap from '../components/CodeHeatmap';
 import PrivateWidgets from '../components/PrivateWidgets';
-import { Star, TrendingUp, Github, ExternalLink, ShieldAlert, Lock, Trophy } from 'lucide-react';
+import { Star, TrendingUp, Github, ExternalLink, ShieldAlert, Lock, Trophy, Download } from 'lucide-react';
+import { useApp } from '../context/AppContext';
 
-const Dashboard = ({ viewMode, isDarkMode }) => {
+const Dashboard = () => {
+  const { viewMode, isDarkMode, showToast } = useApp();
   const [timeframe, setTimeframe] = useState('7D');
   const topContributor = contributorsData[0];
+
+  const exportData = () => {
+    const data = chartDataHistory[timeframe];
+    const csvContent = "data:text/csv;charset=utf-8," 
+      + "Name,Commits,Tasks\n"
+      + data.map(row => `${row.name},${row.commits},${row.tasks}`).join("\n");
+    
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `devhub_report_${timeframe}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    showToast('Export Successful', `Dashboard data for ${timeframe} has been downloaded.`, 'success');
+  };
 
   // Determine which stats to show
   const currentStats = viewMode === 'private' ? statsHistory['private'] : statsHistory[timeframe];
@@ -45,20 +64,29 @@ const Dashboard = ({ viewMode, isDarkMode }) => {
         </div>
 
         {viewMode === 'public' && (
-          <div className="flex bg-white dark:bg-zinc-900 p-1.5 rounded-2xl border border-zinc-100 dark:border-zinc-800 shadow-sm transition-colors">
-            {['7D', '30D', '12M'].map((t) => (
-              <button
-                key={t}
-                onClick={() => setTimeframe(t)}
-                className={`px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
-                  timeframe === t 
-                  ? 'bg-accent text-white shadow-lg shadow-accent/20' 
-                  : 'text-zinc-400 hover:text-accent'
-                }`}
-              >
-                {t}
-              </button>
-            ))}
+          <div className="flex items-center gap-4">
+            <div className="flex bg-white dark:bg-zinc-900 p-1.5 rounded-2xl border border-zinc-100 dark:border-zinc-800 shadow-sm transition-colors">
+              {['7D', '30D', '12M'].map((t) => (
+                <button
+                  key={t}
+                  onClick={() => setTimeframe(t)}
+                  className={`px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
+                    timeframe === t 
+                    ? 'bg-accent text-white shadow-lg shadow-accent/20' 
+                    : 'text-zinc-400 hover:text-accent'
+                  }`}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+            <button 
+              onClick={exportData}
+              className="p-4 bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-2xl text-zinc-400 hover:text-accent hover:shadow-lg transition-all"
+              title="Export Data"
+            >
+              <Download size={18} />
+            </button>
           </div>
         )}
       </header>

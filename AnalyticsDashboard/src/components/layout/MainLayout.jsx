@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useApp } from "../../context/AppContext";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import RightSidebar from "./RightSidebar";
 
-const MainLayout = ({ isDarkMode, setIsDarkMode, viewMode, setViewMode, isCollapsed, setIsCollapsed }) => {
+const MainLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { isDarkMode } = useApp();
 
   return (
     <div className={`h-screen w-full flex font-sans overflow-hidden relative transition-colors duration-300 ${isDarkMode ? 'bg-zinc-950 text-white' : 'bg-[#F8F9FB] text-zinc-800'}`}>
@@ -15,21 +17,14 @@ const MainLayout = ({ isDarkMode, setIsDarkMode, viewMode, setViewMode, isCollap
       <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-purple-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <Sidebar 
-        isDarkMode={isDarkMode} 
         isOpen={isSidebarOpen} 
         setIsOpen={setIsSidebarOpen}
-        isCollapsed={isCollapsed}
-        setIsCollapsed={setIsCollapsed}
       />
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 h-full relative z-10">
         <Header 
-          isDarkMode={isDarkMode} 
-          setIsDarkMode={setIsDarkMode} 
           setIsSidebarOpen={setIsSidebarOpen}
-          viewMode={viewMode}
-          setViewMode={setViewMode}
         />
 
         {/* INNER CONTENT */}
