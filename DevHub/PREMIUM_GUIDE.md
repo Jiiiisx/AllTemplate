@@ -1,23 +1,25 @@
-# 📔 AnalyticsDashboard - Premium Customization Guide
+# 📔 DevHub - Premium Customization Guide
 
-Build your next SaaS tool faster with **AnalyticsDashboard**. This guide will help you set up and customize the dashboard to fit your needs.
+Welcome to **DevHub**. This guide will help you configure your developer dashboard to fit your specific workflow.
 
-## 1. Centralized Data Management
-Open `src/data/`. You will find several files controlling the dashboard content:
-- **statsData.js:** Update the main metric cards (Users, Revenue, etc.).
-- **notifications.js:** Manage the system-wide notification feed.
-- **config.js:** Control branding and general application settings.
+## 1. Centralized Data Control
+The "brain" of DevHub is located in `src/data/`. Update these files to change the dashboard content:
+- **config.js:** Global settings and branding.
+- **repos.js:** Update your project list and repository stats.
+- **tasks.js:** Manage your active development sprints.
+- **docs.js:** Organize your technical documentation categories.
+- **workspaces.js:** Configure team or project environments.
 
-## 2. Working with Charts
-This template uses professional charting libraries. To update the data points, look into `src/components/RevenueChart.jsx` or `src/components/CodeHeatmap.jsx`. Data can be passed via props or fetched from your API.
+## 2. UI Customization
+DevHub uses a "Developer-First" aesthetic.
+- **Theme:** To change the primary accent color (defaulting to a tech-blue/emerald), update `tailwind.config.js`.
+- **Layout:** The sidebar and navigation logic can be found in `src/components/layout/`.
 
-## 3. Theming & Styling
-The dashboard uses Tailwind CSS for its clean look.
-- **Colors:** Update `tailwind.config.js` to change the primary brand color.
-- **Layout:** The layout is managed in `src/components/layout/`.
+## 3. Integrating Real Data
+While this template comes with mock data, it is designed for easy API integration. You can replace the static imports in the `data` folder with `fetch` calls or `axios` requests to your real backend or GitHub API.
 
 ## 4. Deployment
-- **Platform:** Vercel, Netlify, or AWS Amplify.
+- **Platform:** Vercel (Recommended), Netlify, or Cloudflare Pages.
 - **Build Command:** `npm run build`
 - **Output:** `dist` folder.
 
