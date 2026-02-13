@@ -68,3 +68,22 @@ export const packages = [
     image: "https://images.pexels.com/photos/2474689/pexels-photo-2474689.jpeg?auto=compress&cs=tinysrgb&w=600" 
   },
 ];
+
+export const faqs = [
+  {
+    question: "How do I book a tour package?",
+    answer: "You can book directly through our website by selecting a package and filling out the booking form, or contact our 24/7 support via WhatsApp."
+  },
+  {
+    question: "Is the trip insurance included?",
+    answer: "Yes, all our premium packages include comprehensive travel insurance to ensure your peace of mind throughout the journey."
+  },
+  {
+    question: "Can I customize my own itinerary?",
+    answer: "Absolutely! Use our Trip Planner feature at the bottom of the page or speak with our travel consultants to create your dream trip."
+  },
+  {
+    question: "What is your refund policy?",
+    answer: "We offer a full refund for cancellations made at least 7 days before the departure date. For more details, please check our Terms & Conditions."
+  }
+];
