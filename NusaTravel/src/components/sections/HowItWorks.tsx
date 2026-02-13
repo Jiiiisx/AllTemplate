@@ -10,31 +10,29 @@ const steps = [
 
 export const HowItWorks = () => {
   return (
-    <section className="px-12 py-24 bg-slate-50/50">
-      <div className="grid grid-cols-1 gap-16 md:grid-cols-2 items-center">
-        <div className="relative aspect-square overflow-hidden rounded-[40px]">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80" className="h-full w-full object-cover" alt="Traveler" />
-          <div className="absolute bottom-8 left-8 right-8 glass p-6 rounded-3xl text-white">
-            <p className="text-sm italic opacity-90">"Embark on a journey to find your dream destination, where adventure and relaxation await, creating unforgettable memories along the way."</p>
-          </div>
+    <section className="px-8 md:px-12 py-32 bg-surface">
+      <div className="mx-auto max-w-7xl grid grid-cols-1 gap-16 lg:grid-cols-2 items-center">
+        <div className="relative aspect-square overflow-hidden rounded-[48px] shadow-2xl shadow-secondary/5">
+          <img src="https://images.pexels.com/photos/1007657/pexels-photo-1007657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" className="h-full w-full object-cover" alt="Traveler" />
+          <div className="absolute inset-0 bg-secondary/10" />
         </div>
         <div>
-          <p className="mb-2 text-sm font-medium text-slate-500 uppercase tracking-widest">How it works</p>
-          <h2 className="mb-12 text-5xl font-bold leading-tight">One click for you</h2>
-          <div className="space-y-8">
+          <p className="mb-4 text-xs font-black uppercase tracking-[0.3em] text-secondary">How it works</p>
+          <h2 className="mb-12 text-5xl font-black leading-tight text-secondary">One click for you</h2>
+          <div className="space-y-10">
             {steps.map((step, i) => (
               <motion.div 
                 key={i} 
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="flex gap-6 group"
+                className="flex gap-8 group"
               >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white border border-slate-100 shadow-sm transition group-hover:bg-black group-hover:text-white group-hover:scale-110">
-                  <step.icon className="h-6 w-6" />
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[20px] bg-white border border-secondary/5 shadow-sm transition group-hover:bg-secondary group-hover:text-white">
+                  <step.icon className="h-7 w-7 text-secondary group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <h3 className="mb-2 text-xl font-bold">{step.title}</h3>
+                  <h3 className="mb-2 text-xl font-black text-secondary">{step.title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>

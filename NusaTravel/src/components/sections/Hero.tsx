@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Calendar, Users, Wallet, Search } from 'lucide-react';
+import { Calendar, Users, Wallet } from 'lucide-react';
 import { siteConfig } from '../../data/config';
 
 export const Hero = () => {
@@ -12,14 +12,14 @@ export const Hero = () => {
           className="h-full w-full object-cover"
           alt="Hero Background"
         />
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
       
       <div className="relative z-10 w-full max-w-6xl px-6 py-20 text-center text-white">
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-6 text-5xl font-extrabold tracking-tight md:text-8xl"
+          className="mb-6 text-5xl font-extrabold tracking-tight md:text-8xl text-white"
         >
           Extraordinary natural and <br className="hidden md:block" /> cultural charm
         </motion.h1>
@@ -44,7 +44,7 @@ export const Hero = () => {
             <Calendar className="h-5 w-5 text-white/60" />
             <div>
               <p className="text-[10px] font-bold uppercase tracking-widest text-white/50">Date</p>
-              <p className="whitespace-nowrap text-sm font-bold">Select Date</p>
+              <p className="whitespace-nowrap text-sm font-bold text-white">Select Date</p>
             </div>
           </div>
           
@@ -52,7 +52,7 @@ export const Hero = () => {
             <Wallet className="h-5 w-5 text-white/60" />
             <div>
               <p className="text-[10px] font-bold uppercase tracking-widest text-white/50">Budget</p>
-              <p className="whitespace-nowrap text-sm font-bold">Set Budget</p>
+              <p className="whitespace-nowrap text-sm font-bold text-white">Set Budget</p>
             </div>
           </div>
 
@@ -60,17 +60,17 @@ export const Hero = () => {
             <Users className="h-5 w-5 text-white/60" />
             <div>
               <p className="text-[10px] font-bold uppercase tracking-widest text-white/50">Guest</p>
-              <p className="whitespace-nowrap text-sm font-bold">Add Guests</p>
+              <p className="whitespace-nowrap text-sm font-bold text-white">Add Guests</p>
             </div>
           </div>
 
-          <button className="flex h-14 items-center justify-center rounded-[24px] bg-white px-10 font-bold text-black transition hover:bg-slate-100">
+          <button className="flex h-14 items-center justify-center rounded-[24px] bg-secondary px-10 font-bold text-white transition hover:bg-accent">
             Search
           </button>
         </motion.div>
 
         {/* Stats Section */}
-        <div className="mt-24 grid grid-cols-2 gap-8 md:flex md:items-center md:justify-center md:gap-24">
+        <div className="mt-24 grid grid-cols-2 gap-8 md:flex md:items-center md:justify-center md:gap-24 text-white">
           {[
             { label: 'Total Customers', value: '10M+' },
             { label: 'Years Experience', value: '09+' },

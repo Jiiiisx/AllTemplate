@@ -7,8 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#000000",
-        secondary: "#6366f1",
+        primary: "#064e3b", // Deep Emerald
+        secondary: "#10b981", // Emerald
+        accent: "#f59e0b", // Amber for contrast
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

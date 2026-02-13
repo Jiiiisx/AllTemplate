@@ -1,10 +1,22 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #ffffff;
+  --color-secondary: #064e3b;
+  --color-accent: #10b981;
+  --color-surface: #f8fafc;
+  --font-sans: "Inter", ui-sans-serif, system-ui;
+  --radius-4xl: 2.5rem;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   body {
-    @apply antialiased text-slate-900 bg-white font-['Inter'];
+    @apply antialiased text-secondary bg-primary font-sans;
+  }
+  h1, h2, h3, h4 {
+    @apply tracking-tight text-secondary;
   }
 }
 
@@ -12,23 +24,15 @@
   @apply bg-white/20 backdrop-blur-md border border-white/30;
 }
 
-.glass-dark {
-  @apply bg-black/40 backdrop-blur-lg border border-white/10;
-}
-
-/* Custom Scrollbar for premium feel */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-slate-50;
+  @apply bg-surface;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-300 rounded-full border-4 border-transparent bg-clip-content;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-slate-400;
+  @apply bg-secondary/10 rounded-full border-4 border-transparent bg-clip-content;
 }

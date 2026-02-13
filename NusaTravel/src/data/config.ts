@@ -3,34 +3,39 @@ export const siteConfig = {
   hero: {
     title: "Extraordinary natural and cultural charm",
     subtitle: "Exploring Indonesia is an unforgettable adventure.",
-    backgroundImage: "https://images.pexels.com/photos/2474690/pexels-photo-2474690.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" // Bromo
+    // Hero tetap ukuran besar agar tajam, tapi tanpa DPR 2 agar lebih ringan
+    backgroundImage: "https://images.pexels.com/photos/2474690/pexels-photo-2474690.jpeg?auto=compress&cs=tinysrgb&w=1920" 
   }
 };
 
 export const destinations = [
   { 
     id: 1, 
-    title: "Bromo Tengger Tour", 
-    location: "Bromo, East Java", 
-    image: "https://images.pexels.com/photos/2356045/pexels-photo-2356045.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+    title: "Nusa Penida", 
+    location: "Bali", 
+    weather: "29°C", 
+    image: "https://images.pexels.com/photos/2570063/pexels-photo-2570063.jpeg?auto=compress&cs=tinysrgb&w=800" 
   },
   { 
     id: 2, 
-    title: "Bali Beach Tourism", 
-    location: "Denpasar, Bali", 
-    image: "https://images.pexels.com/photos/1007657/pexels-photo-1007657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+    title: "Komodo Island", 
+    location: "NTT", 
+    weather: "31°C", 
+    image: "https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=800" 
   },
   { 
     id: 3, 
-    title: "Sumatra Tourism", 
-    location: "Lampung, South Sumatra", 
-    image: "https://images.pexels.com/photos/2104110/pexels-photo-2104110.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+    title: "Tegalalang", 
+    location: "Ubud", 
+    weather: "26°C", 
+    image: "https://images.pexels.com/photos/1643130/pexels-photo-1643130.jpeg?auto=compress&cs=tinysrgb&w=600" 
   },
   { 
     id: 4, 
-    title: "Borobudur Temple Tour", 
-    location: "Jogjakarta, Central Java", 
-    image: "https://images.pexels.com/photos/1105342/pexels-photo-1105342.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+    title: "Raja Ampat", 
+    location: "Papua", 
+    weather: "30°C", 
+    image: "https://images.pexels.com/photos/3401292/pexels-photo-3401292.jpeg?auto=compress&cs=tinysrgb&w=600" 
   },
 ];
 
@@ -42,7 +47,7 @@ export const packages = [
     date: "23 AUGUST - 29 AUGUST", 
     rating: 4.9, 
     duration: "7 Days", 
-    image: "https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+    image: "https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg?auto=compress&cs=tinysrgb&w=600" 
   },
   { 
     id: 2, 
@@ -51,7 +56,7 @@ export const packages = [
     date: "23 AUGUST - 27 AUGUST", 
     rating: 4.9, 
     duration: "5 Days", 
-    image: "https://images.pexels.com/photos/356049/pexels-photo-356049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+    image: "https://images.pexels.com/photos/356049/pexels-photo-356049.jpeg?auto=compress&cs=tinysrgb&w=600" 
   },
   { 
     id: 3, 
@@ -60,6 +65,6 @@ export const packages = [
     date: "23 AUGUST - 25 AUGUST", 
     rating: 4.9, 
     duration: "3 Days", 
-    image: "https://images.pexels.com/photos/2474689/pexels-photo-2474689.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+    image: "https://images.pexels.com/photos/2474689/pexels-photo-2474689.jpeg?auto=compress&cs=tinysrgb&w=600" 
   },
 ];

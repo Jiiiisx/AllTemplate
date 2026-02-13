@@ -24,7 +24,7 @@ export const Navbar = () => {
           <span className="rounded-full bg-white/20 px-2 py-1">DE</span>
           <span className="px-2 py-1 opacity-40">EN</span>
         </div>
-        <button className="rounded-full bg-white px-6 py-2.5 text-xs font-bold text-black transition hover:scale-105 active:scale-95">
+        <button className="rounded-full bg-secondary px-6 py-2.5 text-xs font-bold text-white transition hover:bg-accent hover:scale-105 active:scale-95">
           Login
         </button>
       </div>
