@@ -64,7 +64,10 @@ export const Hero = () => {
             </div>
           </div>
 
-          <button className="flex h-14 items-center justify-center rounded-[24px] bg-secondary px-10 font-bold text-white transition hover:bg-accent">
+          <button 
+            onClick={() => document.getElementById('tour')?.scrollIntoView({ behavior: 'smooth' })}
+            className="flex h-14 items-center justify-center rounded-[24px] bg-secondary px-10 font-bold text-white transition hover:bg-accent"
+          >
             Search
           </button>
         </motion.div>
