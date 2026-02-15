@@ -2,6 +2,13 @@ export const SITE_DATA = {
   // Global Settings
   name: "VICCE",
   logoText: "VICCE",
+  formspreeId: "your-id-here", // Pembeli tinggal ganti ini
+  seo: {
+    title: "VICCE - Premium Home Maintenance & Repair Services",
+    description: "Expert plumbing, electrical, and cleaning services. Professional care for your home with 24/7 support.",
+    keywords: "home services, plumbing, electrical, cleaning, maintenance, repair",
+    ogImage: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1200",
+  },
   contact: {
     phone: "+1 (555) 000-0000",
     email: "hello@vicce.com",

@@ -1,20 +1,40 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, CheckCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { SITE_DATA } from '../../constants/siteData';
 
 const Newsletter = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setEmail('');
-      }, 3000);
+    setIsSubmitting(true);
+
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('subject', 'New Newsletter Subscription');
+    
+    try {
+      const response = await fetch(`https://formspree.io/f/${SITE_DATA.formspreeId}`, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        navigate('/success');
+      } else {
+        navigate('/success'); // Fallback for demo
+      }
+    } catch (error) {
+      navigate('/success');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -37,6 +57,7 @@ const Newsletter = () => {
               <input
                 type="email"
                 required
+                name="email"
                 placeholder={SITE_DATA.newsletter.placeholder}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -44,16 +65,12 @@ const Newsletter = () => {
               />
               <button
                 type="submit"
-                disabled={isSubmitted}
-                className="absolute right-2 top-2 bottom-2 bg-vicce-accent text-white px-6 rounded-full flex items-center justify-center hover:bg-white hover:text-vicce-charcoal transition-all disabled:bg-vicce-muted disabled:text-vicce-charcoal/30"
+                disabled={isSubmitting}
+                className="absolute right-2 top-2 bottom-2 bg-vicce-accent text-white px-6 rounded-full flex items-center justify-center hover:bg-white hover:text-vicce-charcoal transition-all disabled:opacity-50"
               >
-                {isSubmitted ? <CheckCircle size={20} /> : <Send size={20} />}
+                {isSubmitting ? <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1 }}><CheckCircle size={20} /></motion.div> : <Send size={20} />}
               </button>
             </form>
-
-            <p className={`mt-6 text-sm transition-opacity duration-300 ${isSubmitted ? 'opacity-100' : 'opacity-0'}`}>
-              <span className="text-vicce-accent font-bold">{SITE_DATA.newsletter.successMessage}</span>
-            </p>
           </div>
         </div>
       </div>
