@@ -44,7 +44,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                 <div>
                   <label className="block text-sm font-bold tracking-widest uppercase text-vicce-charcoal/40 mb-3">Select Service</label>
                   <select className="w-full bg-white border border-vicce-muted rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-vicce-accent/20 appearance-none">
-                    {SITE_DATA.services.map(s => (
+                    {SITE_DATA.services.items.map(s => (
                       <option key={s.id} value={s.id}>{s.title}</option>
                     ))}
                   </select>

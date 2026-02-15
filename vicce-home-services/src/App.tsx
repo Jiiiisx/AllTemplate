@@ -1,31 +1,18 @@
-import React, { useState } from 'react';
-import Navbar from './components/layout/Navbar';
-import Hero from './components/sections/Hero';
-import Services from './components/sections/Services';
-import About from './components/sections/About';
-import Portfolio from './components/sections/Portfolio';
-import Footer from './components/layout/Footer';
-import BookingModal from './components/ui/BookingModal';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import NotFound from './components/layout/NotFound';
+import SmoothScroll from './components/ui/SmoothScroll';
 
 function App() {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-
   return (
-    <div className="min-h-screen bg-vicce-cream font-sans">
-      <Navbar onBookClick={() => setIsBookingOpen(true)} />
-      <main>
-        <Hero onBookClick={() => setIsBookingOpen(true)} />
-        <Services />
-        <About />
-        <Portfolio />
-      </main>
-      <Footer />
-      
-      <BookingModal 
-        isOpen={isBookingOpen} 
-        onClose={() => setIsBookingOpen(false)} 
-      />
-    </div>
+    <Router>
+      <SmoothScroll />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
 

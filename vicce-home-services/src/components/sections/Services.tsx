@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Droplets, Zap, Sparkles, Paintbrush, ArrowRight } from 'lucide-react';
 import { SITE_DATA } from '../../constants/siteData';
+import RevealText from '../ui/RevealText';
 
 const iconMap: any = {
   Droplets: Droplets,
@@ -15,14 +16,16 @@ const Services = () => {
     <section id="services" className="section-padding bg-vicce-charcoal text-white rounded-[60px] mx-4 md:mx-8 my-12">
       <div className="container mx-auto">
         <div className="max-w-3xl mb-16">
-          <motion.h2 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-serif mb-6"
           >
-            Experience excellence
-          </motion.h2>
+            <RevealText 
+              text={SITE_DATA.services.title} 
+              className="text-4xl md:text-5xl font-serif mb-6"
+            />
+          </motion.div>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -30,13 +33,12 @@ const Services = () => {
             transition={{ delay: 0.1 }}
             className="text-lg text-white/60 leading-relaxed"
           >
-            Every corner of your home deserves professional attention and detailed care. 
-            From emergency repairs to aesthetic upgrades, we've got you covered.
+            {SITE_DATA.services.description}
           </motion.p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {SITE_DATA.services.map((service, index) => {
+          {SITE_DATA.services.items.map((service, index) => {
             const Icon = iconMap[service.icon];
             return (
               <motion.div
