@@ -11,10 +11,19 @@
 - **Clean Dark/Light UI:** A sophisticated aesthetic that works in any lighting.
 
 ## 🚀 Quick Start
-```bash
-npm install
-npm run dev
-```
+1. **Clone/Download** the repository.
+2. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Setup Gemini AI:**
+   - Get your API Key from [Google AI Studio](https://aistudio.google.com/).
+   - Create a `.env` file in the root directory.
+   - Add your key: `VITE_GEMINI_API_KEY=your_api_key_here`
+4. **Run Development:**
+   ```bash
+   npm run dev
+   ```
 
 ## 🛠 Customization
 Branding, menu items, and constants are managed in `constants.ts`. Check `PREMIUM_GUIDE.md` for a full customization walkthrough.
