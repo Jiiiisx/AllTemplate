@@ -1,31 +1,36 @@
-STANDARD LICENSE AGREEMENT
+BREW & CO - END USER LICENSE AGREEMENT (EULA)
 
-Product: Brew & Co - Modern Coffee Template (v1)
-License Type: Single Use / Commercial License
-
-By purchasing and downloading this template, you agree to the following terms:
+This License Agreement is a legal agreement between you (the "Licensee") and the author of Brew & Co (the "Licensor") for the use of the Brew & Co React Template.
 
 1. GRANT OF LICENSE
-This license grants you a non-exclusive, non-transferable right to use this template to create one (1) end product for yourself or for one client.
+By purchasing this template, you are granted a non-exclusive, non-transferable license to use the code, AI integration logic, and assets under the terms of the specific license tier purchased:
 
-2. PERMITTED USES
-- You may use the template for personal or commercial projects.
-- You may modify the code and design to suit your needs.
-- You may deploy the end product to a production environment (web hosting).
+A. PERSONAL LICENSE
+- Usage: Valid for one (1) personal project or one (1) project for a business owned by the Licensee.
+- Restrictions: You may not use this for client work or across multiple commercial entities.
 
-3. RESTRICTIONS
-- You CANNOT redistribute, sublicense, or resell the source code "as is" or as a derivative template/theme.
-- You CANNOT include the source code in any software, tool, or repository that allows others to download or use the template.
-- You CANNOT claim ownership of the original design or code structure.
+B. COMMERCIAL / AGENCY LICENSE
+- Usage: Valid for unlimited personal and professional projects, including client work.
+- Restrictions: You may use the template to build websites for clients, but you cannot resell the template itself as a standalone product or source code.
+
+2. AI INTEGRATION & API KEYS
+- This template includes integration with Google Gemini AI.
+- The Licensee is responsible for obtaining their own API keys and bears any costs associated with AI usage.
+- The Licensor is not responsible for any changes in third-party API policies or pricing.
+
+3. GENERAL RESTRICTIONS
+Regardless of the license tier, the following restrictions apply:
+- You may not redistribute, sub-license, or resell the source code "as-is" or as a derivative template/theme on any marketplace (e.g., Gumroad, ThemeForest, etc.).
+- You may not claim ownership of the original design or AI assistant architecture.
 
 4. INTELLECTUAL PROPERTY
-The original author retains all ownership and copyright of the source code and design elements.
+The Template is the intellectual property of the Licensor. All rights not expressly granted to the Licensee are reserved by the Licensor.
 
-5. NO WARRANTY
-The template is provided "as is" without warranty of any kind. The author is not liable for any damages resulting from the use or inability to use this product.
+5. WARRANTY & LIABILITY
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 6. TERMINATION
-This license is automatically terminated if you breach any of these terms.
+This license is effective until terminated. Your rights under this license will terminate automatically without notice if you fail to comply with any of its terms.
 
----
-Copyright (c) 2026. All rights reserved.
+Thank you for choosing Brew & Co.
+© 2026 Brew & Co. All rights reserved.

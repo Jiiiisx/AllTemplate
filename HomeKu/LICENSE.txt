@@ -1,0 +1,32 @@
+HOMEKU - END USER LICENSE AGREEMENT (EULA)
+
+This License Agreement is a legal agreement between you (the "Licensee") and the author of HomeKu (the "Licensor") for the use of the HomeKu Modern Heritage Real Estate Template.
+
+1. GRANT OF LICENSE
+By purchasing this template, you are granted a non-exclusive, non-transferable license to use the code, dual-theme system architecture, and visual assets under the terms of the specific license tier purchased:
+
+A. PERSONAL LICENSE
+- Usage: Valid for one (1) personal project or one (1) project for a business owned by the Licensee (e.g., your own real estate agency).
+- Restrictions: You may not use this for multiple client projects.
+
+B. COMMERCIAL / AGENCY LICENSE
+- Usage: Valid for unlimited personal and professional projects, including client work for real estate agents or developers.
+- Restrictions: You may use the template to build websites for clients, but you cannot resell the template itself as a standalone product or source code.
+
+2. GENERAL RESTRICTIONS
+Regardless of the license tier, the following restrictions apply:
+- You may not redistribute, sub-license, or resell the source code "as-is" or as a derivative template/theme on any marketplace.
+- You may not claim ownership of the "Modern Heritage" design system or the custom theme-switching logic.
+- All copyright notices within the source code must remain intact.
+
+3. INTELLECTUAL PROPERTY
+The Template is the intellectual property of the Licensor. All rights not expressly granted to the Licensee are reserved by the Licensor.
+
+4. WARRANTY & LIABILITY
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THE USE OF THE TEMPLATE.
+
+5. TERMINATION
+This license is automatically terminated if you fail to comply with any of its terms.
+
+Thank you for choosing HomeKu for your architecture and real estate needs.
+© 2026 HomeKu Collective. All rights reserved.
