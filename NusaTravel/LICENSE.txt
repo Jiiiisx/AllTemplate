@@ -1,0 +1,32 @@
+NUSATRAVEL TEMPLATE - END USER LICENSE AGREEMENT (EULA)
+
+This License Agreement is a legal agreement between you (the "Licensee") and the author of NusaTravel (the "Licensor") for the use of the NusaTravel React Template.
+
+1. GRANT OF LICENSE
+By purchasing this template, you are granted a non-exclusive, non-transferable license to use the code and assets under the terms of the specific license tier you purchased:
+
+A. PERSONAL LICENSE
+- Usage: Valid for one (1) personal project or one (1) project for a business owned by the Licensee.
+- Restrictions: You may not use this for client work or multiple commercial entities.
+
+B. COMMERCIAL/AGENCY LICENSE
+- Usage: Valid for unlimited personal and professional projects, including client work.
+- Restrictions: You may use the template to build websites for clients, but you cannot resell the template itself as a standalone product.
+
+2. GENERAL RESTRICTIONS
+Regardless of the license tier, the following restrictions apply:
+- You may not redistribute, sub-license, or resell the source code "as-is" or as a derivative template/theme on any marketplace (e.g., Gumroad, ThemeForest, etc.).
+- You may not claim ownership of the original design or code architecture.
+- All copyright notices within the source code must remain intact unless explicitly allowed for white-labeling under a custom agreement.
+
+3. INTELLECTUAL PROPERTY
+The Template is the intellectual property of the Licensor. All rights not expressly granted to the Licensee are reserved by the Licensor.
+
+4. WARRANTY & LIABILITY
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+5. TERMINATION
+This license is effective until terminated. Your rights under this license will terminate automatically without notice if you fail to comply with any of its terms.
+
+Thank you for supporting independent creators.
+© 2026 NusaTravel. All rights reserved.

@@ -17,3 +17,9 @@ npm run dev
 
 ## 🛠 Customization
 Managed through `src/data/config.ts`. Update your projects, skills, and bio in seconds.
+
+## ⚠️ Disclaimer
+All images used in this template (including the hero and project images) are for **demonstration purposes only** and are sourced from **Unsplash**. While these photos are high-quality, we strongly recommend replacing them with your own professional photos or AI-generated assets before deploying your site live.
+
+---
+*For more premium templates, visit my Gumroad store.*
